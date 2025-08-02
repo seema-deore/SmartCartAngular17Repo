@@ -1,1 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+.row{
+    padding: 0 !important;
+    margin : 0 !important;
+}
+
+.bgcolor-primary{
+    background-color: goldenrod !important;
+}
+
+.bgcolor-secondary{
+    background-color: navy !important;
+}
+
+.border-primary{
+    border-color: goldenrod !important;
+}
+.border-secondary{
+    border-color: navy !important;
+}
+
+.text-primary{
+color: goldenrod !important;
+
+}
+.text-secondary{
+    color:navy !important;
+}
+.text-white{
+    color:white !important;
+}
+
+.button-primary{
+    background-color: goldenrod;
+    color: white;
+    font-weight: lighter;
+    font-size: xx-small;
+}
+.button-secondary{
+    background-color: white;
+    color:navy;
+}
