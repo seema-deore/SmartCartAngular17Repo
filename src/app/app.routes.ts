@@ -4,14 +4,15 @@ import { authGuard } from './guards/auth.guard';
 
 
 export const routes: Routes = [
+  
   {
-    path: 'admin',
-    canActivate:[authGuard],
-    loadChildren: () => import('./admin/admin.routes').then(m => m.adminRoutes),
+    path: '',
+    redirectTo: 'customer/home',
+    pathMatch: 'full',    
   },
   {
     path: 'customer',
-    canActivate:[authGuard],
+    // canActivate:[authGuard],
     loadChildren: () => import('./customer/customer.routes').then(m => m.customerRoutes),
   },
   {
@@ -22,6 +23,12 @@ export const routes: Routes = [
     path: 'register',
     loadComponent: () => import('./auth/register/register.component').then(c => c.RegisterComponent),
   },
-  { path: '**', redirectTo: '' }
+  {
+    path: 'admin',
+    // canActivate:[authGuard],
+    loadChildren: () => import('./admin/admin.routes').then(m => m.adminRoutes),
+  },
+  
+  // { path: '**', redirectTo: '' }
 ];
 

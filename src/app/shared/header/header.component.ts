@@ -1,20 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, RouterLink],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent {
-constructor(public auth: AuthService, private router: Router) {}
+export class HeaderComponent implements OnInit {
+  //  role: string | null = null; // or 'customer' or 'admin'
+   currentRole: string | null = null;
+
+  constructor(public auth: AuthService) {}
+
+  ngOnInit() {
+    this.currentRole = null;
+    this.auth.role$.subscribe(role => {
+      this.currentRole = role;
+      console.log(this.currentRole);
+    });
+  }
 
   logout() {
-    localStorage.clear();
-    this.auth.setRole('');
-    this.router.navigate(['/login']);
+    this.auth.logout();
+     }
   }
-}
+
+  
+
+

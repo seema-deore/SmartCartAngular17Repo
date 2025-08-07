@@ -1,1 +1,58 @@
-<p>login works!</p>
+<div class="row" style="height:500px ; max-height: 500px;">
+
+<div class="col-lg-4"></div>
+
+<div class="col-lg-4">
+    <form  style="margin-top:100px" class="border-secondary" [formGroup] = "loginForm" (ngSubmit)="onSubmit()">
+
+        <div class="bgcolor-secondary text-center text-white">
+            <p class="fs-5 py-2 "> Login
+            <a [routerLink]="['/customer/home']" routerLinkActive="router-link-active">
+                <span class="bi bi-x mx-2 text-white" style="float:right"></span></a>
+            </p>
+        </div>
+             
+       
+            <div class="form-group">
+
+                <input  type="email" formControlName="email" class="form-control mt-5"   placeholder="Email"  required>
+                <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="error">                
+                    <div *ngIf="email?.errors">
+                    Valid Email ID required.
+                    </div>
+                </div>
+            </div>        
+            
+                  
+            <div class="form-group">
+                <input type="password" formControlName="password" class="form-control mt-3" placeholder="Password" maxlength="10" minlength="3">
+                <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="error">
+                  <div *ngIf="password?.errors">
+                    Valid Password is required.
+                  </div>
+                </div>
+            </div>
+        
+            <div class="form-group my-3 text-center">
+                <button type="submit" [disabled]="!loginForm.valid" class="btn button-primary">Submit</button>
+                <button  class="btn button-primary" (click)="onCancel()">Cancel</button>
+
+                <h6 style="text-align: center;color:orange;">{{loginError}}</h6>
+                <h6><a *ngIf="loginError!=''" (click)="onTry()">Try Again</a></h6>
+            </div>
+            
+
+            <div>                
+               <!-- <h6>Forget <a>Password?</a></h6> -->
+               
+               <p class="text-center my-3 text-xxs">Don't have an account? 
+                   <a [routerLink]="['/register']" routerLinkActive="router-link-active"><span class="text-primary ">Register</span></a> 
+               </p>
+            </div>   
+     </form>
+</div>
+
+<div class="col-lg-4"></div>
+
+</div>
+

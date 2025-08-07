@@ -1,8 +1,9 @@
 import { CanActivateFn } from '@angular/router';
-
+import { AuthService } from '../services/auth.service';
+import { Inject, inject } from '@angular/core';
 export const customerGuard: CanActivateFn = (route, state) => {
-  return true;
-
-  // const userRole = this.authService.getRole();
-  // return userRole === 'customer';
+  const authService = inject(AuthService);
+  
+  const userRole = authService.getRole();
+  return userRole === 'Customer';
 };

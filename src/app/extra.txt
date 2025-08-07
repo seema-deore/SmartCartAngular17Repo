@@ -1,0 +1,30 @@
+
+---------------------------------standard api call handeling------------------
+
+this.apiService.addProduct(productData).subscribe({
+  next: (res) => {
+    this.successMessage = 'Product added successfully!';
+    this.errorMessage = ''; 
+  },
+  error: (err) => {
+    this.errorMessage = 'Failed to add product. Please try again.';
+    this.successMessage = '';
+    console.error(err); 
+  },
+  complete: () => {
+    // optional - any cleanup after complete
+  }
+});
+-----------------------------display----------------------------------------------------
+
+<div *ngIf="successMessage" class="alert alert-success" role="alert">
+  {{ successMessage }}
+</div>
+
+<div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+  {{ errorMessage }}
+</div>
+
+---------------------------------clear optional---------------------------------------------------
+
+Clear messages after a delay using setTimeout() if needed.

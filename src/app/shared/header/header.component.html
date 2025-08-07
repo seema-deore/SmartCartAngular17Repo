@@ -1,1 +1,85 @@
-<p>header works!</p>
+<nav class="navbar navbar-expand-lg bgcolor-primary fixed-top shadow-sm set-navbar">
+  <!-- Left: Brand and Toggler -->
+  <div class="d-flex align-items-center">
+    <button class="navbar-toggler me-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" routerLink="/home">SmartCart</a>
+  </div>
+
+  <!-- Center: Nav Items (collapse on small screens) -->
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item">
+        <a class="nav-link text-white" [routerLink]="['customer/home']">Home</a>
+      </li>
+
+      <!-- Role: null -->
+      <ng-container *ngIf="currentRole === null">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
+            Pages
+          </a>
+          <ul class="dropdown-menu ">
+            <li><a class="dropdown-item" routerLink="/about">About Us</a></li>
+            <li><a class="dropdown-item" routerLink="/contact">Contact Us</a></li>
+            <li><a class="dropdown-item" routerLink="/services">Services</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/shop">Shop</a>
+        </li>
+      </ng-container>
+
+      <!-- Role: customer -->
+      <ng-container *ngIf="currentRole === 'Customer'">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            My Account
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" [routerLink]="['customer/cart']">Cart</a></li>
+            <li><a class="dropdown-item" [routerLink]="['customer/checkout']">Check List</a></li>
+            <li><a class="dropdown-item" [routerLink]="['customer/wishlist']">Wish List</a></li>
+          </ul>
+        </li>
+      </ng-container>
+
+      <!-- Role: admin -->
+      <ng-container *ngIf="currentRole === 'Admin'">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            Category Management
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" [routerLink]="['admin/add-category']">Add Category</a></li>
+            <li><a class="dropdown-item" [routerLink]="['admin/delete-category']">Delete Category</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/offers">Offers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/orders">Orders</a>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+
+  <!-- Right: User Icon (Always Visible) -->
+  <div class="d-flex align-items-center">
+    <div class="dropdown">
+      <a class="nav-link text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+        <i class="bi bi-person-circle fs-4"></i>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-end" *ngIf="currentRole==null">
+        <li><a class="dropdown-item" [routerLink] = "['/login']">Login</a></li>
+        <li><a class="dropdown-item" [routerLink] ="['/register']">Register</a></li>
+      </ul>
+       <ul class="dropdown-menu dropdown-menu-end" *ngIf="currentRole==='Admin' ||  currentRole==='Customer'">
+        <li><a class="dropdown-item" (click)="logout()" [routerLink] = "['/customer/home']">Log Out</a></li>
+      
+      </ul>
+    </div>
+  </div>
+</nav>

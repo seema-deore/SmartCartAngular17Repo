@@ -7,23 +7,25 @@ export const customerRoutes: Routes = [
     // canActivate:[customerGuard],
     children: [
       {
-        path: '/customer/home',
+        path: 'home',
         loadComponent: () => import('./home/home.component').then(c => c.HomeComponent)
       },
       {
-        path: '/customer/products',
+        path: 'products',
         loadComponent: () => import('./product-list/product-list.component').then(c => c.ProductListComponent)
       },
       {
-        path: '/customer/product/:id',
+        //path: 'product/:productId', // route not working, pass object instead
+        path: 'product-details',
         loadComponent: () => import('./product-details/product-details.component').then(c => c.ProductDetailsComponent)
-      },
+      }, 
+      
       {
-        path: '/customer/cart',
+        path: 'cart',
         loadComponent: () => import('./cart/cart.component').then(c => c.CartComponent)
       },
       {
-        path: '/customer/checkout',
+        path: 'checkout',
         loadComponent: () => import('./checkout/checkout.component').then(c => c.CheckoutComponent)
       }
     ]

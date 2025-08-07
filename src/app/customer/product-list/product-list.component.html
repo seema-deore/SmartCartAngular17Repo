@@ -1,1 +1,129 @@
-<p>product-list works!</p>
+<!-- 🔻 Search Bar with Category Dropdown -->
+<div class="bg-white border-top shadow-sm py-2">
+  <div class="container">
+    <div class="row g-2 align-items-center">
+      
+      <!-- Dropdown (All Categories) -->
+      <div class="col-12 col-md-3">
+  <div class="dropdown w-100">
+    <button
+      class="btn btn-outline-secondary w-100 dropdown-toggle"
+      type="button"
+      id="categoryDropdown"
+      data-bs-toggle="dropdown"
+      aria-expanded="false">
+      All Categories
+    </button>
+
+    <ul
+      class="dropdown-menu dropdown-full-width"
+      aria-labelledby="categoryDropdown">
+      <li *ngFor="let category of categoryList">
+        <a class="dropdown-item" (click)="onselectCategory(category.categoryId)">
+          {{ category.categoryName }}
+        </a>
+        <hr class="dropdown-divider">
+      </li>
+    
+    </ul>
+  </div>
+</div>
+
+      <!-- Search Field + Button -->
+      <div class="col-12 col-md-9">
+        <form class="d-flex w-100" role="search">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search for items..."
+            aria-label="Search"
+          />
+          <button class="btn btn-primary" type="submit">Search</button>
+        </form>
+
+    <div class="d-inline-block position-relative me-3 dropdown">
+        <i class="bi bi-heart fs-4 cursor-pointer" id="wishlistDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+        <span *ngIf="wishlist.length" class="badge bg-danger position-absolute top-0 start-100 translate-middle badge-rounded-pill">
+          {{ wishlist.length }}
+        </span>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="wishlistDropdown" style="min-width: 250px;">
+          <li *ngIf="wishlist.length === 0" class="dropdown-item text-muted">No items in wishlist</li>
+          <li *ngFor="let item of wishlist" class="dropdown-item small">
+            ❤️ {{ item.productShortName }}
+          </li>
+        </ul>
+      </div>
+
+
+  <div class="d-inline-block position-relative dropdown">
+        <i class="bi bi-cart fs-4 cursor-pointer" id="cartDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+        <!-- <span *ngIf="cart.length" class="badge bg-success position-absolute top-0 start-100 translate-middle badge-rounded-pill">
+          {{ cart.length }}
+        </span>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cartDropdown" style="min-width: 250px;">
+          <li *ngIf="cart.length === 0" class="dropdown-item text-muted">No items in cart</li>
+          <li *ngFor="let item of cart" class="dropdown-item small">
+            🛒 {{ item.productShortName }}
+          </li>
+        </ul> -->
+      </div>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <!-- Left empty column for spacing -->
+  <div class="col-lg-1 d-none d-lg-block"></div>
+
+  <!-- Main card container -->
+  <div class="col-12 col-lg-10">
+    <div class="row">
+      <div
+        class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4"
+        *ngFor="let product of productList"
+      >
+        <div class="card" style="height:450px">
+          <img
+            [src]="product.productImageUrl"
+            class="card-img-top" style="min-height:300px; max-height: 300px;"
+            alt="{{ product.productShortName }}"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ product.productShortName }}</h5>
+            <p class="card-text text-muted">{{ product.categoryName }}</p>
+            <div class="d-flex justify-content-between">
+              <button class="btn button-primary" (click)="onViewDetails(product)">View Details</button>
+              <button class="btn btn-sm fs-6 border-secondary">
+                <i class="bi bi-heart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right empty column for spacing -->
+  <div class="col-lg-1 d-none d-lg-block"></div>
+</div>
+
+
+
+<!-- <div *ngFor="let item of products">  /// for product list add to wishlist
+  <h5>{{ item.name }}</h5>
+
+  <button 
+    (click)="toggleWishlist(item)" 
+    class="btn btn-outline-danger btn-sm">
+    <i [ngClass]="{
+      'bi bi-heart-fill': isInWishlist(item.id),
+      'bi bi-heart': !isInWishlist(item.id)
+    }"></i> Wishlist
+  </button>
+</div> -->
+
