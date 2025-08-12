@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../services/product.service';
+import { CartService } from '../../services/cart.service';
 
 export interface Review {
   name: string;
@@ -23,7 +24,9 @@ export class ProductDetailsComponent implements OnInit{
 
  
   product:any=[];
-  constructor(private route: ActivatedRoute, private productService: ProductService) {}
+  cartProductList:any=[];
+
+  constructor(private route: ActivatedRoute, private productService: ProductService, private cartService: CartService) {}
 
   reviews: Review[] = [
     {
@@ -90,5 +93,33 @@ decreaseQty() {
   if (this.quantity > 1) this.quantity--;
 }
 
+onAddToCart(product:any){
+ const data= {
+  "CartId": 1010,
+  "CustId": 379,
+  "ProductId": product.productId,
+  "Quantity": this.quantity,
+  "AddedDate": new Date()
+}
+this.productService.addProductToCart(data).subscribe({
+  next:(res:any)=>{
+     alert("added");  
+   this.cartService.notifyCartUpdated(); 
+    //  this.getCartProductList(); 
+  },
+  error:(err:any)=>{
 
+  },
+})
+}
+getCartProductList(){
+  this.productService.getCartProductByCustomerId(101).subscribe({
+  next:(res:any)=>{
+     this.cartProductList=res.data;
+     console.log(this.cartProductList);
+  },
+  error:(err:any)=>{
+
+  },
+})}
 }

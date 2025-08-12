@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
   constructor(public auth: AuthService) {}
 
   ngOnInit() {
-    this.currentRole = null;
+    this.currentRole = 'Admin';// null
     this.auth.role$.subscribe(role => {
       this.currentRole = role;
       console.log(this.currentRole);

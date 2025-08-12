@@ -38,13 +38,13 @@
             placeholder="Search for items..."
             aria-label="Search"
           />
-          <button class="btn btn-primary" type="submit">Search</button>
-        </form>
+          <button class="btn border-secondary" type="submit"><i class="bi bi-search"></i></button>
+        
 
     <div class="d-inline-block position-relative me-3 dropdown">
-        <i class="bi bi-heart fs-4 cursor-pointer" id="wishlistDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+        <button class="btn button-primary"><i class="bi bi-heart fs-5 cursor-pointer" id="wishlistDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
         <span *ngIf="wishlist.length" class="badge bg-danger position-absolute top-0 start-100 translate-middle badge-rounded-pill">
-          {{ wishlist.length }}
+          {{ wishlist.length || 0 }}
         </span>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="wishlistDropdown" style="min-width: 250px;">
           <li *ngIf="wishlist.length === 0" class="dropdown-item text-muted">No items in wishlist</li>
@@ -52,25 +52,29 @@
             ❤️ {{ item.productShortName }}
           </li>
         </ul>
+        </button>
       </div>
-
+    
 
   <div class="d-inline-block position-relative dropdown">
-        <i class="bi bi-cart fs-4 cursor-pointer" id="cartDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
-        <!-- <span *ngIf="cart.length" class="badge bg-success position-absolute top-0 start-100 translate-middle badge-rounded-pill">
-          {{ cart.length }}
+        <button class="btn button-primary"><i class="bi bi-cart fs-5 cursor-pointer" id="cartDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+        <span *ngIf="cartProductList.length" class="badge bg-success position-absolute top-0 start-100 translate-middle badge-rounded-pill">
+          {{ cartProductList.length || 0}}
         </span>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cartDropdown" style="min-width: 250px;">
-          <li *ngIf="cart.length === 0" class="dropdown-item text-muted">No items in cart</li>
-          <li *ngFor="let item of cart" class="dropdown-item small">
-            🛒 {{ item.productShortName }}
+        
+      
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cartDropdown" style="max-width: 250px;">
+          <li *ngIf="cartProductList.length === 0" class="dropdown-item text-muted">No items in cart</li>
+          <li *ngFor="let item of cartProductList" class="dropdown-item small">
+          <img [src]=item.productImageUrl style="height:2rem; width:2rem">      {{ item.productShortName }}
+            <button type="button" (click)="onRemoveCartItem(item.productId)"><i class="bi bi-x"></i></button>
           </li>
-        </ul> -->
+          
+        </ul> 
+        </button>
       </div>
-
-
+      </form>
       </div>
-
     </div>
   </div>
 </div>
@@ -98,9 +102,12 @@
             <p class="card-text text-muted">{{ product.categoryName }}</p>
             <div class="d-flex justify-content-between">
               <button class="btn button-primary" (click)="onViewDetails(product)">View Details</button>
-              <button class="btn btn-sm fs-6 border-secondary">
-                <i class="bi bi-heart"></i>
-              </button>
+              <button 
+    (click)="addToWishlist(product)" 
+    class="btn btn-outline-danger btn-sm">
+    <i [ngClass]="{
+      'bi bi-heart-fill': isInWishlist(product.productId),'bi bi-heart': !isInWishlist(product.productId)}"></i> Wishlist
+  </button>
             </div>
           </div>
         </div>
@@ -108,22 +115,4 @@
     </div>
   </div>
 
-  <!-- Right empty column for spacing -->
-  <div class="col-lg-1 d-none d-lg-block"></div>
-</div>
-
-
-
-<!-- <div *ngFor="let item of products">  /// for product list add to wishlist
-  <h5>{{ item.name }}</h5>
-
-  <button 
-    (click)="toggleWishlist(item)" 
-    class="btn btn-outline-danger btn-sm">
-    <i [ngClass]="{
-      'bi bi-heart-fill': isInWishlist(item.id),
-      'bi bi-heart': !isInWishlist(item.id)
-    }"></i> Wishlist
-  </button>
-</div> -->
-
+ 

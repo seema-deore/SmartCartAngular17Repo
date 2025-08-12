@@ -95,7 +95,7 @@ return this.http.post<any>('/api/amazon/AddToCart', productObj );
 // }
 
 deleteProductFromCartById(id:number){
-return this.http.get<any>('/api/amazon/DeleteProductFromCartById/' + id)
+return this.http.get<any>('/api/amazon/DeleteProductFromCartById?id=' + id)
 }
 
 /* --------------------------category---------------*/

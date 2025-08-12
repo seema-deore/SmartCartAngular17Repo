@@ -19,19 +19,19 @@ export class WishlistService {
   }
 
   addToWishlist(product: any): void {
-    if (!this.wishlist.find((p:any) => p.id === product.id)) {
+    if (!this.wishlist.find((p:any) => p.productId === product.id)) {
       this.wishlist.push(product);
       this.save();
     }
   }
 
   removeFromWishlist(productId: number): void {
-    this.wishlist = this.wishlist.filter((p:any) => p.id !== productId);
+    this.wishlist = this.wishlist.filter((p:any) => p.productId !== productId);
     this.save();
   }
 
   isInWishlist(productId: number): boolean {
-    return this.wishlist.some((p:any) => p.id === productId);
+    return this.wishlist.some((p:any) => p.productId === productId);
   }
 
   private save(): void {
