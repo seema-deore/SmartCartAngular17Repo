@@ -1,1 +1,46 @@
-<p>cart works!</p>
+<div class="checkout-container">
+  <h2>Checkout</h2>
+
+  <table class="table table-bordered table-hover text-center">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Product</th>
+        <th>Category</th>
+        <th>Price (₹)</th>
+        <th>Quantity</th>
+        <th>Subtotal (₹)</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of cartProductList">
+        <td>
+          <img [src]="item.productImageUrl" alt="{{ item.productName }}" width="60" height="60">
+        </td>
+        <td>{{ item.productName }}</td>
+        <td>{{ item.categoryName }}</td>
+        <td>{{ item.productPrice }}</td>
+        <td>
+          <input type="number" class="form-control text-center" 
+                 [(ngModel)]="item.quantity"
+                 (ngModelChange)="updateQuantity(item, $event)" 
+                 min="1">
+        </td>
+        <td>{{ item.productPrice * item.quantity }}</td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="removeItem(item.cartId)">X</button>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="5" class="text-end"><strong>Total</strong></td>
+        <td colspan="2"><strong>₹{{ totalAmount }}</strong></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <button class="btn btn-success w-100 mt-3">Place Order</button>
+</div>
+

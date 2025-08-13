@@ -3,3 +3,12 @@
   max-height: 400px; /* Adjust height as needed */
   overflow-y: auto;
 }
+.row{
+  width:auto !important
+}
+.start-100 {
+    left: 80% !important;
+}
+.top-0 {
+    top: .5rem !important;
+}

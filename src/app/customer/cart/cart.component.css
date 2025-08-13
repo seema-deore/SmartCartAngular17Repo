@@ -1,0 +1,12 @@
+.checkout-container {
+  max-width: 900px;
+  margin: auto;
+}
+
+table img {
+  border-radius: 5px;
+}
+
+tfoot td {
+  font-size: 1.2em;
+}

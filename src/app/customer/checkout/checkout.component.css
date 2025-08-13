@@ -1,0 +1,12 @@
+.checkout-container {
+  max-width: 90%;
+  margin: auto;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+button {
+  width: 100%;
+}

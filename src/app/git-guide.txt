@@ -1,0 +1,15 @@
+If you haven’t yet connected the remote repository:
+
+bash
+Copy
+Edit
+git remote add origin https://github.com/your-username/your-repo-name.git
+git push -u origin main
+
+
+--------------------------Next commit ----------------------------------
+
+git status
+git add .
+git commit -m "Second commit with new features"
+git push origin main

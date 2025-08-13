@@ -15,7 +15,7 @@
       </li>
 
       <!-- Role: null -->
-      <ng-container *ngIf="currentRole === null">
+      <ng-container *ngIf="currentRole === 'User'">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
             Pages
@@ -72,7 +72,7 @@
       <a class="nav-link text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
         <i class="bi bi-person-circle fs-4"></i>
       </a>
-      <ul class="dropdown-menu dropdown-menu-end" *ngIf="currentRole==null">
+      <ul class="dropdown-menu dropdown-menu-end" *ngIf="currentRole==='User'">
         <li><a class="dropdown-item" [routerLink] = "['/login']">Login</a></li>
         <li><a class="dropdown-item" [routerLink] ="['/register']">Register</a></li>
       </ul>

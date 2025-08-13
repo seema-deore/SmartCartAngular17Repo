@@ -2,12 +2,14 @@
 // auth.service.ts
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+  [x: string]: any;
 
-constructor(private http: HttpClient)  {}
+constructor(private http: HttpClient, private route: Router)  {}
 //  apiUrl='https://freeapi.miniprojectideas.com'; // set in proxy.conf.json ; no need to attach
 
   adminId:string='';
@@ -15,7 +17,7 @@ constructor(private http: HttpClient)  {}
   isauthenticate:boolean=false;
   
   
-  private roleSubject = new BehaviorSubject<string>(localStorage.getItem('role') || '');
+  private roleSubject = new BehaviorSubject<string>(localStorage.getItem('role') || 'User');
   role$ = this.roleSubject.asObservable();
 
   setRole(role: string) {
@@ -75,6 +77,8 @@ constructor(private http: HttpClient)  {}
   logout() {
     localStorage.clear();
     this.roleSubject.next('');
+    this.route.navigate(['/customer/products']);
+    localStorage.setItem('role','User');
   }
 
 

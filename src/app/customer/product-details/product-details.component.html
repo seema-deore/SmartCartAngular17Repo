@@ -36,8 +36,9 @@
 
       <!-- Buy/Add to Cart Buttons -->
       <div class="d-flex gap-2">
-        <button class="btn btn-primary px-4" (click)="onAddToCart(product)">Add to Cart</button>
+        <button class="btn btn-primary px-4" (click)="onAddToCart(product)">Add To Cart</button>
         <button class="btn btn-outline-secondary px-4">Buy Now</button>
+        <button class="btn btn-primary px-4"><a [routerLink]="['/customer/products']" routerLinkActive="router-link-active" >Go To List</a></button>
       </div>
     </div>
 

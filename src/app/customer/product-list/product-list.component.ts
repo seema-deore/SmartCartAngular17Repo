@@ -18,8 +18,8 @@ errorMessage:string='';
 
 categoryList:any = [];
 productList:any = [];
-wishlist:any = [];
-cartProductList:any = [];
+wishlist:any[] = [];
+cartProductList:any []= [];
 
 constructor(private wishlistService: WishlistService, private cartService: CartService,
             private productService: ProductService,
@@ -30,20 +30,15 @@ localStorage.setItem('wishlist', JSON.stringify([]));
   this.getProductList();
   this.getCategoryList();
   this.getCartProductList();
-  this.cartService.cartUpdated$.subscribe(updated => {
-    if (updated) {
-      this.getCartProductList(); // Refresh cart list when updated
-    }
-  });
+  
 }
 
 getCartProductList(){
   this.productService.getCartProductByCustomerId(379).subscribe({
   next:(res:any)=>{
-     this.cartProductList=res.data;
+     this.cartProductList=res.data;         
   },
   error:(err:any)=>{
-
   },
 })
 }
@@ -107,10 +102,14 @@ addToWishlist(product: any): void {
 isInWishlist(productId: number): boolean {
   return this.wishlistService.isInWishlist(productId);
 }
-onRemoveCartItem(cartItemId:number){
-this.productService.deleteProductFromCartById(379).subscribe((res:any)=>{
-  this.getCartProductList();
-})
- }
 
+onRemoveCartItem(cartId:any){
+  
+this.productService.deleteProductFromCartById(cartId).subscribe((res:any)=>{
+  alert("item removed")
+ this.cartService.notifyCartUpdated();
+      this.getCartProductList(); // Refresh cart list when updated       
+ })
 }
+}
+

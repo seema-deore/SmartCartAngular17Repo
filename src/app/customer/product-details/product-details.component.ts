@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { CartService } from '../../services/cart.service';
 
@@ -15,7 +15,7 @@ export interface Review {
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css'
 })
@@ -26,7 +26,7 @@ export class ProductDetailsComponent implements OnInit{
   product:any=[];
   cartProductList:any=[];
 
-  constructor(private route: ActivatedRoute, private productService: ProductService, private cartService: CartService) {}
+  constructor(private route: ActivatedRoute, private productService: ProductService, private cartService: CartService, private router: Router) {}
 
   reviews: Review[] = [
     {
@@ -95,7 +95,7 @@ decreaseQty() {
 
 onAddToCart(product:any){
  const data= {
-  "CartId": 1010,
+  "CartId": 0,
   "CustId": 379,
   "ProductId": product.productId,
   "Quantity": this.quantity,
@@ -105,21 +105,13 @@ this.productService.addProductToCart(data).subscribe({
   next:(res:any)=>{
      alert("added");  
    this.cartService.notifyCartUpdated(); 
-    //  this.getCartProductList(); 
+   
+    //  this.getCartProductList(); // in productList
   },
   error:(err:any)=>{
 
   },
 })
 }
-getCartProductList(){
-  this.productService.getCartProductByCustomerId(101).subscribe({
-  next:(res:any)=>{
-     this.cartProductList=res.data;
-     console.log(this.cartProductList);
-  },
-  error:(err:any)=>{
 
-  },
-})}
 }
