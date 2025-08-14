@@ -10,12 +10,7 @@ export const routes: Routes = [
     redirectTo: 'customer/home',
     pathMatch: 'full',    
   },
-  {
-    path: 'customer',
-    // canActivate:[authGuard],
-    loadChildren: () => import('./customer/customer.routes').then(m => m.customerRoutes),
-  },
-  {
+   {
     path: 'login',
     loadComponent: () => import('./auth/login/login.component').then(c => c.LoginComponent),
   },
@@ -23,6 +18,12 @@ export const routes: Routes = [
     path: 'register',
     loadComponent: () => import('./auth/register/register.component').then(c => c.RegisterComponent),
   },
+  {
+    path: 'customer',
+    // canActivate:[authGuard],
+    loadChildren: () => import('./customer/customer.routes').then(m => m.customerRoutes),
+  },
+  
   {
     path: 'admin',
     canActivate:[authGuard],

@@ -76,11 +76,11 @@ constructor(private http: HttpClient, private route: Router)  {}
 }
   logout() {
     localStorage.clear();
-    this.roleSubject.next('');
-    this.route.navigate(['/customer/products']);
+    this.roleSubject.next('User');
+    
     localStorage.setItem('role','User');
+    this.route.navigate(['']);
   }
-
 
 }
 

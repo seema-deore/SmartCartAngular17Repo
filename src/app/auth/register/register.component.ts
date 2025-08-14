@@ -34,7 +34,7 @@ registerForm!: FormGroup;
       mobnumber:['', [Validators.required]]    
     });
 
-    this.authService.logout();
+    // this.authService.logout();
   }
 
   get first_name() { return this.registerForm.get('first_name'); }

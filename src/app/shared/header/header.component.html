@@ -38,15 +38,18 @@
             My Account
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" [routerLink]="['customer/cart']">Cart</a></li>
-            <li><a class="dropdown-item" [routerLink]="['customer/checkout']">Check List</a></li>
-            <li><a class="dropdown-item" [routerLink]="['customer/wishlist']">Wish List</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/customer/cart']">Cart</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/customer/checkout']">Check List</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/customer/wishlist']">Wish List</a></li>
           </ul>
         </li>
       </ng-container>
 
       <!-- Role: admin -->
       <ng-container *ngIf="currentRole === 'Admin'">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="admin/products">Product Management</a>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
             Category Management
@@ -69,15 +72,16 @@
   <!-- Right: User Icon (Always Visible) -->
   <div class="d-flex align-items-center">
     <div class="dropdown">
-      <a class="nav-link text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+      <a class="nav-link text-white dropdown-toggle" role="button" data-bs-toggle="dropdown">
         <i class="bi bi-person-circle fs-4"></i>
-      </a>
+      </a> 
+      <!-- *ngIf="currentRole==='User'" -->
       <ul class="dropdown-menu dropdown-menu-end" *ngIf="currentRole==='User'">
-        <li><a class="dropdown-item" [routerLink] = "['/login']">Login</a></li>
-        <li><a class="dropdown-item" [routerLink] ="['/register']">Register</a></li>
+        <li><a class="dropdown-item" routerLink = "/login">Login</a></li>
+        <li><a class="dropdown-item" routerLink = "/register">Register</a></li>
       </ul>
        <ul class="dropdown-menu dropdown-menu-end" *ngIf="currentRole==='Admin' ||  currentRole==='Customer'">
-        <li><a class="dropdown-item" (click)="logout()" [routerLink] = "['/customer/home']">Log Out</a></li>
+        <li><a class="dropdown-item" (click)="logout()" routerLink = "/customer/home">Log Out</a></li>
       
       </ul>
     </div>

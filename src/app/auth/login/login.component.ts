@@ -29,13 +29,14 @@ export class LoginComponent implements OnInit {
     ) { }  
 
   ngOnInit(): void {  
-
+  
+  localStorage.removeItem('token');
     this.loginForm = this.fb.group({
       email: ['', [Validators.required,Validators.email]],
       password: ['', [Validators.required]]
     });
 
-    this.authService.logout();        
+    // this.authService.logout();        
   }
 
   get email() { return this.loginForm.get('email'); }
@@ -57,53 +58,68 @@ export class LoginComponent implements OnInit {
       };
 
     // Call login function
-    this.authService.login(loginData).subscribe((res:any)=>{
-      // next: (res) => {
-        console.log('Login successful:', res);
-
-        localStorage.setItem('token', res.token);
-        // localStorage.setItem('role', res.role);    
-        
+this.authService.login(loginData).subscribe({
+        next: (res: any) => {
+          console.log('login successful:', res);
+          if(!res.data)
+          alert(res.message);
+        else{
+          localStorage.setItem('token', res.data.token);
+        }
         if(this.authService.isLoggedIn()){
-          this.currentRole= localStorage.getItem('role')||'';
-          this.authService.setRole(this.currentRole);
-          
-            if(this.authService.isAdmin()){
-              
-               this.router.navigate(['/admin/dashboard']);
-            }
-            else if(this.authService.isCustomer()){ 
-              this.authService.setRole("Customer"); 
-                this.router.navigate(['/customer/home']);
-        }    }   
-      },
-      // error: (err:any) => {
-      //   console.error('Login failed:', err);
-      //   alert('Invalid login credentials');
-      // }
-      )
+           this.currentRole= localStorage.getItem('role')||'';
+           this.authService.setRole(this.currentRole);
+        
+             if(this.authService.isAdmin()){
+            
+                this.router.navigate(['/admin/dashboard']);
+             }
+             else if(this.authService.isCustomer()){ 
+               this.authService.setRole("Customer"); 
+                 this.router.navigate(['/customer/home']);
+         }    }
+
+
+          console.log(localStorage.getItem('token'));
+        },
+        error: (err: any) => {
+          console.error('Login failed:', err);
+          alert('failed. Please try again.');
+        },
+        complete: () => {
+          console.log('Request completed.');
+        }
+      });
+    
     }  
 
   onCancel(){
     this.loginForm.reset();
   }
 }
-    //     this.authService.login(this.email?.value , this.password?.value).subscribe((data:any) => {
+    // this.authService.login(loginData).subscribe((res:any)=>{
+    //   // next: (res) => {
+    //     console.log('Login successful:', res);
+
+    //     localStorage.setItem('token', res.token);
+    //     console.log(res.token)
+    //     // localStorage.setItem('role', res.role);    
+        
+    //     if(this.authService.isLoggedIn()){
+    //       this.currentRole= localStorage.getItem('role')||'';
+    //       this.authService.setRole(this.currentRole);
           
-    //       const getisAdmin= localStorage.getItem('Adminkey');       
- 
-    //       if ((this.authService.isLoggedIn())&&(getisAdmin=='true')){
-            
-    //         this.router.navigate(['/adminboardMenu']);
-    //       } 
-
-    //       else if ((this.authService.isLoggedIn())&&(getisAdmin!='true')){
-  
-    //         this.router.navigate(['/homeMenu']);
-    //       } 
-    //     },
-    //     (error:any) => this.loginError ="Invalid id or password!!"
-    //     );
-    // }
-
-
+    //         if(this.authService.isAdmin()){
+              
+    //            this.router.navigate(['/admin/dashboard']);
+    //         }
+    //         else if(this.authService.isCustomer()){ 
+    //           this.authService.setRole("Customer"); 
+    //             this.router.navigate(['/customer/home']);
+    //     }    }   
+    //   },
+    //   // error: (err:any) => {
+    //   //   console.error('Login failed:', err);
+    //   //   alert('Invalid login credentials');
+    //   // }
+    //   )
