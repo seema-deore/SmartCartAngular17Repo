@@ -2,20 +2,21 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
-import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ProductSearchPipe } from '../../filters/product-search.pipe';
 declare var bootstrap: any;
 
 @Component({
   selector: 'app-product-management',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule],
+  imports: [CommonModule,ReactiveFormsModule, FormsModule,ProductSearchPipe],
   templateUrl: './product-management.component.html',
   styleUrl: './product-management.component.css'
 })
 export class ProductManagementComponent implements OnInit {
 successMessage:string='';
 errorMessage:string='';
-
+searchText:string='';
 categoryList:any = [];
 productList:any = [];
 productForm!: FormGroup;

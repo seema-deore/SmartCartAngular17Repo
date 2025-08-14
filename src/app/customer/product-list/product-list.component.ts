@@ -4,18 +4,20 @@ import { CommonModule } from '@angular/common';
 import { ProductService } from '../../services/product.service';
 import { Router, RouterLink } from '@angular/router';
 import { CartService } from '../../services/cart.service';
+import { ProductSearchPipe } from '../../filters/product-search.pipe';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ProductSearchPipe, FormsModule],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })
 export class ProductListComponent implements OnInit{
 successMessage:string='';
 errorMessage:string='';
-
+searchText: string = '';
 categoryList:any = [];
 productList:any = [];
 wishlist:any[] = [];
