@@ -17,7 +17,7 @@ a{
 }
 
 .bgcolor-secondary{
-    background-color: rgb(59, 82, 98) !important;
+    background-color: rgb(48,48,48) !important;
 }
 
 .border-primary{
@@ -47,5 +47,5 @@ color: goldenrod !important;
 }
 .button-secondary{
     background-color: white !important;
-    color:rgb(59, 82, 98)!important;
+    color:rgb(48,48,48)!important;
 }

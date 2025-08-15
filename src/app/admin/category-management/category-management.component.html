@@ -1,0 +1,53 @@
+<div class="category-management-container">
+  <h2>Category Management</h2>
+
+  <!-- Category Form -->
+  <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()" class="category-form">
+    <div>
+      <label>Category Name</label>
+      <input type="text" formControlName="CategoryName" placeholder="Enter category name" />
+      <div class="error" *ngIf="categoryForm.get('CategoryName')?.touched && categoryForm.get('CategoryName')?.invalid">
+        Category Name is required
+      </div>
+    </div>
+
+    <div>
+      <label>Parent Category ID</label>
+      <input type="number" formControlName="ParentCategoryId" />
+    </div>
+
+    <div>
+      <label>User ID</label>
+      <input type="number" formControlName="UserId" />
+    </div>
+
+    <button type="submit" class="btn-submit">
+      {{ isEditing ? 'Update Category' : 'Add Category' }}
+    </button>
+  </form>
+
+  <!-- Category Table -->
+  <table class="category-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Category Name</th>
+        <th>Parent Category ID</th>
+        <th>User ID</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let category of categories">
+        <td>{{ category.CategoryId }}</td>
+        <td>{{ category.CategoryName }}</td>
+        <td>{{ category.ParentCategoryId }}</td>
+        <td>{{ category.UserId }}</td>
+        <td>
+          <button (click)="onEdit(category)">Edit</button>
+          <button (click)="onDelete(category.CategoryId)" class="btn-delete">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

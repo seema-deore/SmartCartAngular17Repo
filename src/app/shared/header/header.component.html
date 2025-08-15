@@ -9,13 +9,13 @@
 
   <!-- Center: Nav Items (collapse on small screens) -->
   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav me-auto">
-      <li class="nav-item">
-        <a class="nav-link text-white" [routerLink]="['customer/home']">Home</a>
-      </li>
+    <ul class="navbar-nav me-auto">      
 
       <!-- Role: null -->
       <ng-container *ngIf="currentRole === 'User'">
+        <li class="nav-item">
+        <a class="nav-link text-white" [routerLink]="['customer/home']">Home</a>
+      </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
             Pages
@@ -33,6 +33,9 @@
 
       <!-- Role: customer -->
       <ng-container *ngIf="currentRole === 'Customer'">
+        <li class="nav-item">
+        <a class="nav-link text-white" [routerLink]="['customer/home']">Home</a>
+      </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
             My Account
@@ -48,22 +51,19 @@
       <!-- Role: admin -->
       <ng-container *ngIf="currentRole === 'Admin'">
         <li class="nav-item">
-          <a class="nav-link" routerLink="admin/products">Product Management</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-            Category Management
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" [routerLink]="['admin/add-category']">Add Category</a></li>
-            <li><a class="dropdown-item" [routerLink]="['admin/delete-category']">Delete Category</a></li>
-          </ul>
+        <a class="nav-link text-white" routerLink="admin/dashboard">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/offers">Offers</a>
+          <a class="nav-link text-white"  routerLink="admin/products">Product Management</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/orders">Orders</a>
+        <a class="nav-link text-white" routerLink="admin/categories">Category Management</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="admin/offers">Offers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="admin/orders">Orders</a>
         </li>
       </ng-container>
     </ul>
