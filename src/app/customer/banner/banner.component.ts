@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { ProductService } from '../../services/product.service';
 import { RouterLink } from '@angular/router';
@@ -11,7 +11,18 @@ import { RouterLink } from '@angular/router';
   templateUrl: './banner.component.html',
   styleUrl: './banner.component.css'
 })
-export class BannerComponent implements OnInit{
+export class BannerComponent implements OnInit, AfterViewInit{
+
+  @ViewChildren('animateOnScroll', { read: ElementRef }) elements!: QueryList<ElementRef>;
+
+ largeViewImages: string[] = [
+  'assets/images/scrollImg1.jpg',
+  'assets/images/scrollImg2.jpg',
+  'assets/images/scrollImg1.jpg',
+  'assets/images/scrollImg2.jpg',
+  
+];
+
  productList:any=[];
   services = [
     {
@@ -55,6 +66,21 @@ export class BannerComponent implements OnInit{
         }
       });
   }
+ngAfterViewInit(): void {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in-out');
+          // Optional: unobserve so animation happens only once
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    this.elements.forEach(el => observer.observe(el.nativeElement));
+  }
+  
 }
+
 
 
