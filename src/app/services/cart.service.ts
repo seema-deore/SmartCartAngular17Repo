@@ -10,7 +10,7 @@ export class CartService {
   cartUpdated$ = this.cartUpdatedSubject.asObservable();
 
   constructor() {}
-notifyCartUpdated() {
+  notifyCartUpdated() {
     this.cartUpdatedSubject.next(true);
   }
   

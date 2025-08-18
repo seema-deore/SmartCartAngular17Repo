@@ -1,5 +1,4 @@
-<div class="checkout-container">
-  <h2>Checkout</h2>
+<div class="checkout-container">  
 
   <table class="table table-bordered table-hover text-center">
     <thead>
@@ -23,8 +22,8 @@
         <td>{{ item.productPrice }}</td>
         <td>
           <input type="number" class="form-control text-center" 
-                 [(ngModel)]="item.quantity"
-                 (ngModelChange)="updateQuantity(item, $event)" 
+                 [(ngModel)]="item.quantity" readonly
+                 (ngModelChange)="addUpdatedToCart(item,$event)" 
                  min="1">
         </td>
         <td>{{ item.productPrice * item.quantity }}</td>
@@ -41,6 +40,6 @@
     </tfoot>
   </table>
 
-  <button class="btn btn-success w-100 mt-3">Place Order</button>
+  <button class="btn btn-success w-100 mt-3"><a [routerLink]="['/customer/checkout']" routerLinkActive="router-link-active" >Place Order</a></button>
 </div>
 

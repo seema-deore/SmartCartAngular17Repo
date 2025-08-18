@@ -1,6 +1,9 @@
 .category-management-container {
   max-width: 800px;
   margin: 20px auto;
+  
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .category-form {

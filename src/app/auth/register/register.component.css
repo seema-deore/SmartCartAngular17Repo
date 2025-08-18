@@ -26,9 +26,37 @@ margin-bottom:2rem;
     color:orange;
     font-size: .8rem; 
     padding-top:.3rem;   
+    text-align: center;
 }
 
 a{
     cursor:pointer;
     text-decoration: underline;    
 }
+.set-background {
+  background-image: url('/assets/images/background3.jpg');
+  background-size:cover;
+  background-position:center;
+  background-color: rgb(48, 48, 48);
+  height:600px;
+  background-repeat: no-repeat;   
+  position: relative; 
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
+}
+
+.login-container {
+      max-width: 400px;
+      margin: 20px auto;
+      background: #4b43439c;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .login-container h2 {
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .form-control {
+      border-radius: 6px;
+    }
+    

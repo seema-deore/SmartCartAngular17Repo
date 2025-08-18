@@ -76,7 +76,7 @@ this.authService.login(loginData).subscribe({
              }
              else if(this.authService.isCustomer()){ 
                this.authService.setRole("Customer"); 
-                 this.router.navigate(['/customer/home']);
+                 this.router.navigate(['/customer/products']);
          }    }
 
 

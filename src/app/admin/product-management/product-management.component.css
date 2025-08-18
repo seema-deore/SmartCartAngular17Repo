@@ -1,6 +1,6 @@
 .dropdown-full-width {
   width: 100% !important;
-  max-height: 400px; /* Adjust height as needed */
+  max-height: 400px;
   overflow-y: auto;
 }
 .card {

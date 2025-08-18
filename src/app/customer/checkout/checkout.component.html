@@ -1,9 +1,10 @@
+
 <div class="checkout-container">
-  <h2>Checkout</h2>
 
   <form [formGroup]="checkoutForm" (ngSubmit)="placeOrder()">
     <div class="row">
         <div class="col-lg-6">
+            <h3 >Customer Details</h3>
     <div class="form-group">
       <label>Full Name</label>
       <input class="form-control" formControlName="fullName" />
@@ -32,32 +33,50 @@
         <option value="UPI">UPI</option>
       </select>
     </div>
-</div>
-<div class="col-lg-6">
-    <h3>Order Summary</h3>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Item</th>
-          <th>Qty</th>
-          <th>Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of cartItems">
-          <td>{{ item.name }}</td>
-          <td>{{ item.qty }}</td>
-          <td>₹{{ item.price * item.qty }}</td>
-        </tr>
-        <tr>
-          <td colspan="2"><strong>Total</strong></td>
-          <td><strong>₹{{ totalPrice }}</strong></td>
-        </tr>
-      </tbody>
-    </table>
+        </div>
+        <div class="col-lg-6">
+            <h3 >Order Summary</h3>     
 
-    <button class="btn btn-success" type="submit">Place Order</button>
+          <table class="table table-bordered table-hover text-center">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Product</th>
+                <th>Category</th>
+                <th>Price (₹)</th>
+                <th>Quantity</th>
+                <th>Subtotal (₹)</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of cartProductList">
+                <td>
+                  <img [src]="item.productImageUrl" alt="{{ item.productName }}" width="60" height="60">
+                </td>
+                <td>{{ item.productName }}</td>
+                <td>{{ item.categoryName }}</td>
+                <td>{{ item.productPrice }}</td>
+                <td>
+                  {{item.quantity}}
+                </td>
+                <td>{{ item.productPrice * item.quantity }}</td>
+                <td>
+                  <!-- <button class="btn btn-danger btn-sm" (click)="removeItem(item.cartId)">X</button> -->
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="5" class="text-end"><strong>Total</strong></td>
+                <td colspan="2"><strong>₹{{ totalAmount }}</strong></td>
+              </tr>
+            </tfoot>
+          </table>
+
+          <button  type="submit" class="btn btn-success w-100 mt-3">Place Order</button>
+        </div>
     </div>
-    </div>
+    
   </form>
 </div>

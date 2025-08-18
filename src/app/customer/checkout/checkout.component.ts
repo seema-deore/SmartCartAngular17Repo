@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-checkout',
@@ -9,7 +10,8 @@ import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css']
 })
-export class CheckoutComponent {
+export class CheckoutComponent implements OnInit{
+  cartProductList:any;
   checkoutForm = this.fb.group({
     fullName: ['', Validators.required],
     address: ['', Validators.required],
@@ -18,25 +20,35 @@ export class CheckoutComponent {
     paymentMethod: ['COD', Validators.required]
   });
 
-  cartItems = [
-    { name: 'Product A', price: 100, qty: 2 },
-    { name: 'Product B', price: 200, qty: 1 }
-  ];
-
-  constructor(private fb: FormBuilder) {}
-
-  get totalPrice(): number {
-    return this.cartItems.reduce((sum, item) => sum + (item.price * item.qty), 0);
-  }
-
+  
+  constructor(private fb: FormBuilder, private productService:ProductService) {}
+    ngOnInit(): void {   
+      
+              this.getCartProductList();
+    }
+    getCartProductList(){
+      this.productService.getCartProductByCustomerId(379).subscribe({
+      next:(res:any)=>{
+         this.cartProductList=res.data;
+         console.log(this.cartProductList);
+      },
+      error:(err:any)=>{
+    
+      },
+    })}
+      get totalAmount(): number {
+        return this.cartProductList.reduce((sum:number, item:any) => sum + (item.productPrice * item.quantity), 0);
+      }
+ 
   placeOrder() {
-    if (this.checkoutForm.invalid) return;
-    console.log('Order placed:', {
-      customer: this.checkoutForm.value,
-      items: this.cartItems,
-      total: this.totalPrice
-    });
-    alert('Order placed successfully!');
-    this.checkoutForm.reset({ paymentMethod: 'COD' });
+    // if (this.checkoutForm.invalid) return;
+    // console.log('Order placed:', {
+    //   customer: this.checkoutForm.value,
+    //   items: this.cartItems,
+    //   total: this.totalPrice
+    // });
+    // alert('Order placed successfully!');
+    // this.checkoutForm.reset({ paymentMethod: 'COD' });
   }
+
 }

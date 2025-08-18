@@ -28,4 +28,15 @@ p{
 }
 a{
   font-size: .9rem;
+  color:rgb(226, 224, 224)
+}
+span{
+  color:rgb(226, 224, 224)
+}
+.set-name{
+  font-size: 1.8rem;
+  width:fit-content;
+  padding: .2rem 2rem;
+  background-color: goldenrod;
+  border-radius: .5rem;
 }

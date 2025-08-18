@@ -3,6 +3,9 @@
 .card{
   --bs-card-spacer-y:0;
 }
+.set-fashion{
+  font-family: 'Segoe Script', cursive; font-size: 28px;color:goldenrod
+}
 .header-bg {
   background-image: url('/assets/images/background5.jpg');
   background-size:contain;

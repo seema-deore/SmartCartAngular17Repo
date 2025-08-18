@@ -116,8 +116,8 @@ createNewCategory( categoryObj:any){
 //   "UserId": 0
 // }
 
-// deleteCategoryById( categoryId:any){
-//   return this.http.get<any>('/api/amazon/DeleteCategoryById/' + categoryId )
-// }
+deleteCategoryById( categoryId:any){
+  return this.http.get<any>('/api/amazon/DeleteCategoryById?id=' + categoryId )
+}
 
 }

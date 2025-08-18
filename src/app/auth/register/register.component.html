@@ -1,20 +1,20 @@
 <!-- <div class="row setimage" style="background-image: url('assets/images/credit-card.jpg');"> -->
-    <div class="row">
+    <div class="row set-background">
 
-    <div class="col-lg-4"></div>
+    <div class="col-lg-8"></div>
     
     <div class="col-lg-4">
-        <form class="mt-5" [formGroup] ="registerForm" (ngSubmit)="onSubmit()">
+        <form class="login-container text-primary" [formGroup] ="registerForm" (ngSubmit)="onSubmit()">
     
-        <div class="bgcolor-primary text-center text-white">
-            <p class="fs-5 py-2 "> Register
+        <div class="text-center text-primary">
+            <p class="fs-3 pb-2 "> Register
             <a [routerLink]="['/customer/home']" routerLinkActive="router-link-active">
-                <span class="bi bi-x mx-2 text-white" style="float:right"></span></a>
+                <span class="bi bi-x mx-2" style="float:right"></span></a>
             </p>
         </div>
-                <div class="form-group mt-2">
+                <div class="form-group">
 
-                    <input  type="text" formControlName="first_name" class="form-control" pattern="[a-zA-Z ]*" placeholder="First Name" 
+                    <input  type="text" formControlName="first_name" class="form-control mt-2" pattern="[a-zA-Z ]*" placeholder="First Name" 
                     required>
                     
                     <div *ngIf="first_name?.invalid && (first_name?.dirty || first_name?.touched)" class="error">
@@ -74,8 +74,8 @@
                 </div>
             
                 <div class="form-group text-center">
-                <button type="submit" [disabled]="!registerForm.valid" class="btn button-primary">Submit</button>
-                <button  class="btn button-primary" (click)="onCancel()">Cancel</button>
+                <button type="submit" [disabled]="!registerForm.valid" class="btn button-primary px-5">Submit</button>
+                <button  class="btn button-primary px-5" (click)="onCancel()">Cancel</button>
 
                 <h6 style="text-align: center;color:orange;">{{registerError}}</h6>
                 <h6><a *ngIf="registerError!=''" (click)="onTry()">Try Again</a></h6>
@@ -83,15 +83,13 @@
                 
                               
                 <div>             
-               <h6 class="text-center">Already have an account?
+               <h6 class="text-center text-white mt-2">Already have an account?
                    <a [routerLink]="['/login']" routerLinkActive="router-link-active"><span class="text-primary ">Login</span></a> 
                </h6>
             </div>  
     
         </form>
-    </div>
-    
-    <div class="col-lg-4"></div>
+    </div>    
     
     </div>
     
