@@ -24,7 +24,7 @@ isEditMode = false;
 selectedProduct:any;
 selectedProductId: number | null = null;
 modalInstance: any;
-
+selectedCategoryName: string=''
 
 constructor(private productService: ProductService,private fb: FormBuilder ) {}
 
@@ -82,7 +82,13 @@ getProductList(){
         }
       });
   }
-onselectCategory(categoryId:any){
+
+  onselectAllCategories() {
+  this.selectedCategoryName = '';
+  this.getProductList();
+}
+onselectCategory(categoryId:any, categoryName: string){
+  this.selectedCategoryName = categoryName;
  this.productService.getAllProductsCategoryIdWise(categoryId).subscribe((res:any)=>{
  this.productList= res.data;
  console.log(this.productList);
@@ -117,25 +123,7 @@ openAddProduct() {
 this.openModal();
   }
 
-  /*saveProduct() {
-    if (this.productForm.invalid) return;
-
-    if (this.isEditMode && this.selectedProductId !== null) {
-      // Update product
-      this.productService.updateProduct(this.productForm.value).subscribe(() => {
-        alert("product updated");
-       this.getProductList();
-        this.closeModal();
-      });
-    } else {
-      // Add new product
-      this.productService.createProduct(this.productForm.value).subscribe(() => {
-       this.getProductList();
-       alert("product added");
-        this.closeModal();
-      });
-    }
-  }*/
+  
 
 saveProduct() {
     if (this.productForm.invalid) return;

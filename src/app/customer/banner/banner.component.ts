@@ -3,11 +3,13 @@ import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren }
 import { AuthService } from '../../services/auth.service';
 import { ProductService } from '../../services/product.service';
 import { RouterLink } from '@angular/router';
+import { NgOptimizedImage } from '@angular/common'
+
 
 @Component({
   selector: 'app-banner',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink],// NgOptimizedImage used for  ngSrc
   templateUrl: './banner.component.html',
   styleUrl: './banner.component.css'
 })
@@ -19,8 +21,7 @@ export class BannerComponent implements OnInit, AfterViewInit{
   'assets/images/scrollImg1.jpg',
   'assets/images/scrollImg2.jpg',
   'assets/images/scrollImg1.jpg',
-  'assets/images/scrollImg2.jpg',
-  
+  'assets/images/scrollImg2.jpg',  
 ];
 
  productList:any=[];

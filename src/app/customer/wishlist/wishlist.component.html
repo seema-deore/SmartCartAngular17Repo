@@ -1,12 +1,15 @@
 <h3>My Wishlist</h3>
-<div *ngIf="wishlist.length > 0; else empty">
-  <div *ngFor="let item of wishlist" class="mb-3">
+@if(wishlist.length > 0){
+<div>
+  @for(item of wishlist; track item.id){
+  <div class="mb-3">
     <h5>{{ item.name }}</h5>
     <button class="btn btn-danger btn-sm" (click)="remove(item.id)">Remove</button>
   </div>
+}
 </div>
-
-<ng-template #empty>
+}
+@else{
   <p>No items in wishlist.</p>
-</ng-template>
+}
 

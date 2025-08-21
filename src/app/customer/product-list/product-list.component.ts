@@ -6,6 +6,7 @@ import { Router, RouterLink } from '@angular/router';
 import { CartService } from '../../services/cart.service';
 import { ProductSearchPipe } from '../../filters/product-search.pipe';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-product-list',
@@ -19,20 +20,26 @@ successMessage:string='';
 errorMessage:string='';
 searchText: string = '';
 categoryList:any = [];
+selectedCategoryName : string='';
 productList:any = [];
 wishlist:any[] = [];
 cartProductList:any []= [];
-
+currentRole:string='';
 constructor(private wishlistService: WishlistService, private cartService: CartService,
-            private productService: ProductService,
+            private productService: ProductService,private auth: AuthService,
             private router: Router) {}
 
 ngOnInit(): void {
 localStorage.setItem('wishlist', JSON.stringify([]));
   this.getProductList();
   this.getCategoryList();
-  this.getCartProductList();
-  
+  this.getCartProductList();  
+
+  this.auth.role$.subscribe(role => {
+      this.currentRole = role;
+      console.log(this.currentRole);
+    });
+
 }
 
 getCartProductList(){
@@ -63,6 +70,11 @@ this.productService.getAllCategory().subscribe({
   }
 });
 }
+
+onselectAllCategories() {
+  this.selectedCategoryName = '';
+  this.getProductList();
+}
 getProductList(){
     this.productService.getAllProducts().subscribe({
         next: (res: any) => {
@@ -78,7 +90,8 @@ getProductList(){
         }
       });
   }
-onselectCategory(categoryId:any){
+onselectCategory(categoryId:any,categoryName:any){
+  this.selectedCategoryName = categoryName;
  this.productService.getAllProductsCategoryIdWise(categoryId).subscribe((res:any)=>{
  this.productList= res.data;
  console.log(this.productList);

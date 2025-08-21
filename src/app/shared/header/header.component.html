@@ -8,12 +8,12 @@
     <a class="navbar-brand text-white fs-2" routerLink="/home"><span>Smar<img src="/assets/images/cart3.png"class="set-logo"> </span></a>
   </div>
 
-  <!-- Center: Nav Items (collapse on small screens) -->
+  
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav me-auto">      
 
-      <!-- Role: null -->
-      <ng-container *ngIf="currentRole === 'User'">
+      
+      @if(currentRole === 'User'){
         <li class="nav-item">
         <a class="nav-link text-white" [routerLink]="['customer/home']">Home</a>
       </li>
@@ -30,10 +30,10 @@
         <li class="nav-item">
           <a class="nav-link text-white" routerLink="/shop">Shop</a>
         </li>
-      </ng-container>
+      }
 
       <!-- Role: customer -->
-      <ng-container *ngIf="currentRole === 'Customer'">
+      @if(currentRole === 'Customer'){
         <li class="nav-item">
         <a class="nav-link text-white" [routerLink]="['customer/home']">Home</a>
       </li>
@@ -47,10 +47,10 @@
             <li><a class="dropdown-item" [routerLink]="['/customer/wishlist']">Wish List</a></li>
           </ul>
         </li>
-      </ng-container>
+      }
 
       <!-- Role: admin -->
-      <ng-container *ngIf="currentRole === 'Admin'">
+      @if(currentRole === 'Admin'){
         <li class="nav-item">
         <a class="nav-link text-white" routerLink="admin/dashboard">Dashboard</a>
         </li>
@@ -66,25 +66,32 @@
         <li class="nav-item">
           <a class="nav-link text-white" routerLink="admin/orders">Orders</a>
         </li>
-      </ng-container>
+      }
     </ul>
   </div>
 
   <!-- Right: User Icon (Always Visible) -->
   <div class="d-flex align-items-center">
+    @if(currentRole==='User'){
     <div class="dropdown">
       <a class="nav-link text-white dropdown-toggle" role="button" data-bs-toggle="dropdown">
         <i class="bi bi-person-circle fs-4"></i>
-      </a> 
-      <!-- *ngIf="currentRole==='User'" -->
-      <ul class="dropdown-menu dropdown-menu-end" *ngIf="currentRole==='User'">
+      </a>       
+      <ul class="dropdown-menu dropdown-menu-end">
         <li><a class="dropdown-item" routerLink = "/login">Login</a></li>
         <li><a class="dropdown-item" routerLink = "/register">Register</a></li>
-      </ul>
-       <ul class="dropdown-menu dropdown-menu-end" *ngIf="currentRole==='Admin' ||  currentRole==='Customer'">
-        <li><a class="dropdown-item" (click)="logout()" routerLink = "/customer/home">Log Out</a></li>
-      
+      </ul>       
+    </div>
+  }
+    @if(currentRole!='User'){
+    <div class="dropdown">
+      <a class="nav-link text-white dropdown-toggle" role="button" data-bs-toggle="dropdown">
+        <i class="bi bi-person-circle fs-4"></i>
+      </a>        
+       <ul class="dropdown-menu dropdown-menu-end">
+        <li><a class="dropdown-item" (click)="logout()" routerLink = "/customer/home">Log Out</a></li>      
       </ul>
     </div>
+  }
   </div>
 </nav>

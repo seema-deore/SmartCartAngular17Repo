@@ -15,7 +15,8 @@
   <!-- Overlapping service cards -->
 <div class="row services-overlap w-100">
  <div class="row g-3 w-100">
-  <div class="col-12 col-md-6 col-lg-3" *ngFor="let service of services">
+  @for(service of services; track service.icon){
+  <div class="col-12 col-md-6 col-lg-3">
     <div class="card h-100 text-center shadow-sm service-card">
       <div class="card-body p-3">
         <i [class]="service.icon" style="font-size: 1.5rem;"></i>
@@ -24,6 +25,7 @@
       </div>
     </div>
   </div>
+}
 </div>
 </div>
 
@@ -34,7 +36,8 @@
   
     <div class="row align-items-center">      
       
-      <div #animateOnScroll class="col-lg-6 animate-on-scroll">
+      <!-- <div #animateOnScroll class="col-lg-6 animate-on-scroll"> -->
+      <div class="col-lg-6">
        <div class="row g-3 mb-3">
           <div class="column">
             <img src="assets/images/menModel.jpg" alt="Big Product" class="img-fluid rounded shadow-sm big-img">          
@@ -94,7 +97,8 @@
       </div>
 <div class="col-lg-6">
        <div class="row g-3 mb-3">
-          <div  #animateOnScroll class="offer-div animate-on-scroll p-4 align-items-center">
+          <!-- <div  #animateOnScroll class="offer-div animate-on-scroll p-4 align-items-center"> -->
+            <div class="offer-div p-4 align-items-center">
     <!-- <div class=" mt-4 text-white">
       <p class="fs-1">Mega Festive Sale</p>
       <p class="fs-3">Flat 50% off on seleted fashion!!</p>
@@ -119,9 +123,11 @@
 
   <!-- For large devices (grid of 4) -->
   <div class="row d-none d-lg-flex">
-    <div class="col-lg-3 mb-4 px-1" *ngFor="let img of largeViewImages">
+    @for(img of largeViewImages; track img){
+    <div class="col-lg-3 mb-4 px-1" >
       <img [src]="img" class="img-fluid rounded shadow-sm" alt="New Arrival">
     </div>
+  }
   </div>
 
   <!-- For small/medium devices (horizontal scroll of 2 at a time) -->

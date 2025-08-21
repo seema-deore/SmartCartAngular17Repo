@@ -1,5 +1,17 @@
 <div class="row">
-    <app-banner class="p-0"></app-banner>
+    
+    <!-- <app-banner class="p-0"></app-banner> -->
+
+        @defer (on viewport) {
+        <app-banner class="p-0"></app-banner>
+        } @placeholder {
+        <p>Loading ...</p>
+        } @loading {
+        <p>Fetching latest deals...</p>
+        } @error {
+        <p>Something went wrong while loading products.</p>
+        }
+
 </div>
 <div class="row">
     <div class="col-lg-1"></div>

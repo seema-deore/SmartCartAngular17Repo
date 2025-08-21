@@ -3,18 +3,18 @@
   <div class="row">
     <div class="col-lg-3 col-md-6">
       
-      <input type="text" class="form-control my-2" formControlName="CategoryName" placeholder="Enter category name" />
-      <div class="error" *ngIf="categoryForm.get('CategoryName')?.touched && categoryForm.get('CategoryName')?.invalid">
+      <input type="text" class="form-control my-2" formControlName="categoryName" placeholder="Enter category name" />
+      <div class="error" *ngIf="categoryForm.get('CategoryName')?.touched && categoryForm.get('categoryName')?.invalid">
         Category Name is required
       </div>
     </div>
 
     <div class="col-lg-3 col-md-6">      
-      <input type="number" class="form-control my-2" formControlName="ParentCategoryId" placeholder="Parent Category ID"/>
+      <input type="number" class="form-control my-2" formControlName="parentCategoryId" placeholder="Parent Category ID"/>
     </div>
 
     <div class="col-lg-3 col-md-6">      
-      <input type="number" class="form-control my-2" formControlName="UserId" placeholder="User ID"/>
+      <input type="number" class="form-control my-2" formControlName="userId" placeholder="User ID"/>
     </div>
     <div class="col-lg-3 col-md-6 my-2" >
     <button class="form-control btn-info" type="submit">

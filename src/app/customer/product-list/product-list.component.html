@@ -12,19 +12,26 @@
       id="categoryDropdown"
       data-bs-toggle="dropdown"
       aria-expanded="false">
-      All Categories
+      {{ selectedCategoryName || 'All Categories' }}
     </button>
 
     <ul
-      class="dropdown-menu dropdown-full-width"
-      aria-labelledby="categoryDropdown">
-      <li *ngFor="let category of categoryList">
-        <a class="dropdown-item" (click)="onselectCategory(category.categoryId)">
+        class="dropdown-menu dropdown-full-width"
+        aria-labelledby="categoryDropdown">
+      <li>
+          <a class="dropdown-item" (click)="onselectAllCategories()">
+            All Categories
+          </a>
+          <hr class="dropdown-divider">
+      </li>
+      @for(category of categoryList; track category.categoryId ){
+      <li>
+        <a class="dropdown-item" (click)="onselectCategory(category.categoryId, category.categoryName)">
           {{ category.categoryName }}
         </a>
         <hr class="dropdown-divider">
-      </li>
-    
+      </li>   
+    } 
     </ul>
   </div>
 </div>
@@ -45,17 +52,33 @@
 
  <div class="d-inline-block position-relative dropdown w-auto">
         <button class="btn btn-sm button-primary"><i class="bi bi-heart fs-6 cursor-pointer" id="wishlistDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
-        <span *ngIf="wishlist.length" class="badge bg-danger position-absolute top-0 start-100 translate-middle badge-rounded-pill">
+        @if(wishlist.length && currentRole==='Customer'){
+          <span class="badge bg-danger position-absolute top-0 start-100 translate-middle badge-rounded-pill">
           {{ wishlist.length}}
         </span>
-        <span *ngIf="wishlist.length===0" class="badge bg-danger position-absolute top-0 start-100 translate-middle badge-rounded-pill">
+      }
+        @if(wishlist.length===0){
+        <span class="badge bg-danger position-absolute top-0 start-100 translate-middle badge-rounded-pill">
           {{ 0 }}
         </span>
+        }
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="wishlistDropdown">
-          <li *ngIf="wishlist.length === 0" class="dropdown-item text-muted">No items in wishlist</li>
-          <li *ngFor="let item of wishlist" class="dropdown-item small">
-            ❤️ {{ item.productShortName }}
+          @if(wishlist.length === 0){
+          <li  class="dropdown-item text-muted">
+            No items in wishlist
           </li>
+        }
+        @for(item of wishlist ; track item.id){
+          <li class="dropdown-item small d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center">
+            <i class="bi bi-heart-fill"></i> {{ item.productShortName }}
+            </div>
+            <button class="btn btn-sm" (click)="addToWishlist(item)">
+                <i class="bi bi-x"></i>
+              </button>
+          </li>
+          <hr class="dropdown-devider">
+        }
         </ul>
         </button>
       </div>
@@ -63,20 +86,32 @@
     
      <div class="d-inline-block position-relative dropdown w-auto">
         <button class="btn btn-sm button-primary"><i class="bi bi-cart fs-6 cursor-pointer" id="cartDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
-        <span *ngIf="cartProductList.length" class="badge bg-success position-absolute top-0 start-100 translate-middle badge-rounded-pill">
+        @if(cartProductList.length && currentRole==='Customer'){
+          <span class="badge bg-success position-absolute top-0 start-100 translate-middle badge-rounded-pill">
           {{ cartProductList.length}}
         </span>
-        <span *ngIf="cartProductList.length===0" class="badge bg-success position-absolute top-0 start-100 translate-middle badge-rounded-pill">
+      }
+      @if(cartProductList.length===0){
+        <span  class="badge bg-success position-absolute top-0 start-100 translate-middle badge-rounded-pill">
           {{ 0 }}
         </span>
-      
+      }
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cartDropdown">
-          <li *ngIf="cartProductList.length === 0" class="dropdown-item text-muted">No items in cart</li>
-          <li *ngFor="let item of cartProductList" class="dropdown-item small">
-          <img [src]=item.productImageUrl style="height:2rem; width:2rem">   {{ item.productShortName }}
-            <button type="button" (click)="onRemoveCartItem(item.cartId)"><i class="bi bi-x"></i></button>
-          </li>
-          
+          @if(cartProductList.length === 0){
+          <li class="dropdown-item text-muted">No items in cart</li>
+          }
+          @for(item of cartProductList; track item.cartId){
+          <li class="dropdown-item small d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center">
+                <img [src]="item.productImageUrl" style="height:2rem; width:2rem" class="me-2">
+                <span>{{ item.productShortName }}</span>
+              </div>
+              <button class="btn btn-sm" (click)="onRemoveCartItem(item.cartId)">
+                <i class="bi bi-x"></i>
+              </button>
+            </li>
+              <hr class="dropdown-divider">
+            }
         </ul> 
         </button>
       </div>
@@ -93,10 +128,9 @@
   <!-- Main card container -->
   <div class="col-12 col-lg-10">
     <div class="row">
+      @for(product of productList | productSearch:searchText ; track product.productId){
       <div
-        class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4"
-        *ngFor="let product of productList | productSearch:searchText"
-      >
+        class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
         <div class="card" style="height:450px">
           <img
             [src]="product.productImageUrl"
@@ -118,7 +152,9 @@
           </div>
         </div>
       </div>
+    }
     </div>
+  
   </div>
 
  

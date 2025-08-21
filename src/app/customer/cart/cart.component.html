@@ -13,7 +13,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of cartProductList">
+      @for(item of cartProductList; track item.cartId){
+      <tr>
         <td>
           <img [src]="item.productImageUrl" alt="{{ item.productName }}" width="60" height="60">
         </td>
@@ -31,6 +32,7 @@
           <button class="btn btn-danger btn-sm" (click)="removeItem(item.cartId)">X</button>
         </td>
       </tr>
+    }
     </tbody>
     <tfoot>
       <tr>

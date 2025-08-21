@@ -11,14 +11,21 @@
       id="categoryDropdown"
       data-bs-toggle="dropdown"
       aria-expanded="false">
-      All Categories
+      {{selectedCategoryName || 'All Categories'}}
     </button>
 
     <ul
       class="dropdown-menu dropdown-full-width"
       aria-labelledby="categoryDropdown">
+
+      <li>
+          <a class="dropdown-item" (click)="onselectAllCategories()">
+            All Categories
+          </a>
+          <hr class="dropdown-divider">
+      </li>
       <li *ngFor="let category of categoryList">
-        <a class="dropdown-item" (click)="onselectCategory(category.categoryId)">
+        <a class="dropdown-item" (click)="onselectCategory(category.categoryId, category.categoryName)">
           {{ category.categoryName }}
         </a>
         <hr class="dropdown-divider">
