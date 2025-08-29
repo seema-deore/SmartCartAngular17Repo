@@ -115,7 +115,7 @@ openAddProduct() {
     productDescription: product.productDescription,
     createdDate: product.createdDate,
     deliveryTimeSpan: product.deliveryTimeSpan,
-    categoryId: product.categoryId, // ✅ This will set the selected category in dropdown    
+    categoryId: product.categoryId,   
     productImageUrl: product.productImageUrl
   });
   console.log(this.selectedProduct);
@@ -138,7 +138,7 @@ saveProduct() {
   "CreatedDate": new Date(),
   "DeliveryTimeSpan": this.productForm.get('deliveryTimeSpan')?.value,
   "CategoryId": this.productForm.get('categoryId')?.value,
-  "ProductImageUrl": this.productForm.get('productImageUrl')?.value,
+  "ProductImageUrl": this.productForm.get('productImageUrl')?.value,// right-click copy image address
   "UserId": 0
 }
 

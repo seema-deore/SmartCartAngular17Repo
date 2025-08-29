@@ -47,7 +47,11 @@
                 </div>
                 <a href="#" class="text-decoration-none text-white">Forgot Password?</a>
             </div>
-        
+            <div style="color:rgb(245, 109, 5)"
+                role="alert"
+                [style.visibility]="errorMsg ? 'visible' : 'hidden'">
+                {{ errorMsg || 'placeholder text' }}
+            </div>
             <div class="form-group text-center">
                 <button type="submit" [disabled]="!loginForm.valid" class="btn button-primary w-100 mb-5">Log In</button>
                 <button  class="btn button-primary w-100 mb-5" (click)="onCancel()">Cancel</button>

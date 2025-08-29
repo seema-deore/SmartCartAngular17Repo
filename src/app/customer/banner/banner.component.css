@@ -75,7 +75,7 @@
 .services-overlap {
   
   position: absolute;
-  bottom: 0px; /* moves the cards below header image */
+  bottom: 20px; /* moves the cards below header image */
   /* left: 3%; */
     /* transform: translateX(-50%);   */
 }
@@ -83,13 +83,15 @@
   transform: translateY(-5px);
 }
 .service-card {
-  background-color: rgba(71, 71, 71, 0.8);
+  background-color: rgba(21, 20, 20, 0.741);
   color:white;
 }
 
 @media (max-width: 768px) {
   .services-overlap {
+    top:.2rem;
     position : relative;
+    
       }
 }
 .explore-products {

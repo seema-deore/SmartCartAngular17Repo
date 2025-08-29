@@ -105,6 +105,8 @@ onViewDetails(product:any){
 }
 
 addToWishlist(product: any): void {
+  if(localStorage.getItem('role')!='Customer')
+    this.router.navigate(['/login']);
   if (this.wishlistService.isInWishlist(product.productId)) {
     this.wishlistService.removeFromWishlist(product.productId);
   } else {

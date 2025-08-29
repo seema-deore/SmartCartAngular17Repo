@@ -76,7 +76,18 @@ this.productService.getAllCategory().subscribe({
       this.isEditing = false;
       this.editId = null;
     } else {
-      // Add new category
+          let categoryObj={
+
+                "CategoryId": 0,
+                "CategoryName": this.categoryForm.get('categoryName')?.value,
+                "ParentCategoryId": 0,
+                
+              }
+          
+      this.productService.createNewCategory(categoryObj).subscribe(() => {
+        alert("added");
+        this.getCategoryList();
+      });
 
     }
 
@@ -92,7 +103,8 @@ this.productService.getAllCategory().subscribe({
   onDelete(categoryId: number) {
      
     if (confirm('Are you sure you want to delete this product?')) {
-      this.productService.deleteCategoryById(categoryId).subscribe(() => {
+      this.productService.deleteCategoryById(categoryId).subscribe((res:any) => {
+        console.log(res);
         this.getCategoryList();
       });
     }

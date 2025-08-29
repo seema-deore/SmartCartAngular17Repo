@@ -16,7 +16,8 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   submitted = false;
   returnUrl: string='';
-  error: any;
+  error:any;
+  errorMsg:string=''
   loginError: string='';
   currentRole:string='';
   admintoken:string='';
@@ -60,9 +61,10 @@ export class LoginComponent implements OnInit {
     // Call login function
 this.authService.login(loginData).subscribe({
         next: (res: any) => {
-          console.log('login successful:', res);
+         
           if(!res.data)
-          alert(res.message);
+            this.errorMsg=res.message;
+          // alert(res.message);
         else{
           localStorage.setItem('token', res.data.token);
         }
@@ -95,6 +97,7 @@ this.authService.login(loginData).subscribe({
 
   onCancel(){
     this.loginForm.reset();
+    this.errorMsg='';
   }
 }
     // this.authService.login(loginData).subscribe((res:any)=>{

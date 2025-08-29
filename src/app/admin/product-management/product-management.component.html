@@ -54,13 +54,13 @@
 <div class="container mt-2">
   <div class="d-flex justify-content-between align-items-center mb-2">
     
-    <button class="btn button-primary" (click)="openAddProduct()">+ Add Product</button>
+    <button class="btn bgcolor-primary text-white px-5" (click)="openAddProduct()">+ Add Product</button>
   </div>
 
   <div class="row">
     <div class="col-md-3 mb-3" *ngFor="let product of productList | productSearch: searchText">
       <div class="card h-100 border-secondary">
-        <img [src]="product.productImageUrl" class="card-img-top" alt="{{ product.productName }}" height="200px">
+        <img [src]="product.productImageUrl" class="card-img-top" alt="{{ product.productName }}" height="400px">
         <div class="card-body">
           <h5 class="card-title">{{ product.productName }}</h5>
           <p class="card-text">{{ product.productShortName }}</p>

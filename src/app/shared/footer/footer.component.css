@@ -34,9 +34,12 @@ span{
   color:rgb(226, 224, 224)
 }
 .set-name{
-  font-size: 1.8rem;
-  width:fit-content;
-  padding: .2rem 2rem;
+  font-size: 1.6rem;
+  width:80%;  
   background-color: goldenrod;
   border-radius: .5rem;
+  text-align: center;
+}
+.form-control{
+  font-size: .9rem;
 }

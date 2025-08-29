@@ -69,15 +69,15 @@
           </li>
         }
         @for(item of wishlist ; track item.id){
-          <li class="dropdown-item small d-flex align-items-center justify-content-between">
+          <li class="dropdown-item small d-flex align-items-center justify-content-between px-0">
             <div class="d-flex align-items-center">
-            <i class="bi bi-heart-fill"></i> {{ item.productShortName }}
+            <i class="bi bi-heart-fill px-2"></i> {{ item.productShortName }}
             </div>
             <button class="btn btn-sm" (click)="addToWishlist(item)">
                 <i class="bi bi-x"></i>
               </button>
           </li>
-          <hr class="dropdown-devider">
+          <hr class="dropdown-devider m-0">
         }
         </ul>
         </button>
@@ -101,16 +101,16 @@
           <li class="dropdown-item text-muted">No items in cart</li>
           }
           @for(item of cartProductList; track item.cartId){
-          <li class="dropdown-item small d-flex align-items-center justify-content-between">
+          <li class="dropdown-item small d-flex align-items-center justify-content-between px-0">
               <div class="d-flex align-items-center">
-                <img [src]="item.productImageUrl" style="height:2rem; width:2rem" class="me-2">
+                <img [src]="item.productImageUrl" style="height:2rem; width:2rem" class="mx-1">
                 <span>{{ item.productShortName }}</span>
               </div>
               <button class="btn btn-sm" (click)="onRemoveCartItem(item.cartId)">
                 <i class="bi bi-x"></i>
               </button>
             </li>
-              <hr class="dropdown-divider">
+              <hr class="dropdown-divider m-0">
             }
         </ul> 
         </button>

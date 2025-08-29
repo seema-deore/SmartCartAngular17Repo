@@ -106,6 +106,7 @@ getAllCategory(){
 
 createNewCategory( categoryObj:any){
   return this.http.post<any>('/api/amazon/CreateNewCategory',categoryObj )
+  // return this.http.post<any>('/api/Ecommerce/CreateNewCategory',categoryObj )
 }
 
 
@@ -113,11 +114,11 @@ createNewCategory( categoryObj:any){
 //   "CategoryId": 0,
 //   "CategoryName": "string",
 //   "ParentCategoryId": 0,
-//   "UserId": 0
+
 // }
 
 deleteCategoryById( categoryId:any){
-  return this.http.get<any>('/api/amazon/DeleteCategoryById?id=' + categoryId )
+  return this.http.get<any>('/api//DeleteCategoryById?id=' + categoryId )
 }
 
 }
