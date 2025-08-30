@@ -60,11 +60,11 @@
   <div class="row">
     <div class="col-md-3 mb-3" *ngFor="let product of productList | productSearch: searchText">
       <div class="card h-100 border-secondary">
-        <img [src]="product.productImageUrl" class="card-img-top" alt="{{ product.productName }}" height="400px">
+        <img [src]="product.productImageUrl" class="card-img-top" alt="{{ product.productName }}" height="350px">
         <div class="card-body">
-          <h5 class="card-title">{{ product.productName }}</h5>
-          <p class="card-text">{{ product.productShortName }}</p>
-          <p class="fw-bold">₹ {{ product.productPrice }}</p>
+          <h5 class="card-title mb-0">{{ product.productName }}</h5>
+          <!-- <p class="card-text">{{ product.productShortName }}</p> -->
+          <p class="fw-bold">&#8377; {{ product.productPrice }}</p>
           <p class="text-muted">
             {{ product.categoryName }}</p>
         </div>

@@ -49,7 +49,7 @@ registerForm!: FormGroup;
     const data = {
   "userId": 0,
   "firstName": this.first_name?.value,
-  "middleName": "",
+  "middleName": "string2",
   "lastName": this.last_name?.value,
   "mobileNo": this.mobnumber?.value,
   "emailId": this.email?.value,
@@ -65,7 +65,8 @@ registerForm!: FormGroup;
         },
         error: (err: any) => {
           console.error('Registration failed:', err);
-          alert('Registration failed. Please try again.');
+          // alert('Registration failed. Please try again.');
+          this.registerError="Registration failed. Please try again."
         },
         complete: () => {
           console.log('Registration request completed.');

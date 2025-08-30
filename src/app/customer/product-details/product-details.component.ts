@@ -22,7 +22,7 @@ export interface Review {
 
 export class ProductDetailsComponent implements OnInit{
 
- 
+ productDescription:string="Text containing information about product like quality,color,size,material used,duration.Also include text that explain in brief how selected product is better than other local products.   "
   product:any=[];
   cartProductList:any=[];
 

@@ -51,7 +51,7 @@ initForm() {
 getCategoryList(){
 this.productService.getAllCategory().subscribe({
   next: (res) => {
-    this.successMessage = 'Product added successfully!';
+    this.successMessage = 'added successfully!';
     this.errorMessage = ''; 
 
     this.categoryList=res.data;
@@ -141,7 +141,7 @@ saveProduct() {
   "ProductImageUrl": this.productForm.get('productImageUrl')?.value,// right-click copy image address
   "UserId": 0
 }
-
+console.log(productData);
 
 
     if (this.isEditMode && this.selectedProductId !== null) {

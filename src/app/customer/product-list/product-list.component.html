@@ -1,107 +1,97 @@
-
 <div class="bg-white border-top shadow-sm py-2">
   <div class="container">
     <div class="row g-2 align-items-center">
-      
+
       <!-- Dropdown (All Categories) -->
       <div class="col-12 col-md-3">
-  <div class="dropdown w-100">
-    <button
-      class="btn btn-outline-secondary w-100 dropdown-toggle"
-      type="button"
-      id="categoryDropdown"
-      data-bs-toggle="dropdown"
-      aria-expanded="false">
-      {{ selectedCategoryName || 'All Categories' }}
-    </button>
+        <div class="dropdown w-100">
+          <button class="btn btn-outline-secondary w-100 dropdown-toggle" type="button" id="categoryDropdown"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            {{ selectedCategoryName || 'All Categories' }}
+          </button>
 
-    <ul
-        class="dropdown-menu dropdown-full-width"
-        aria-labelledby="categoryDropdown">
-      <li>
-          <a class="dropdown-item" (click)="onselectAllCategories()">
-            All Categories
-          </a>
-          <hr class="dropdown-divider">
-      </li>
-      @for(category of categoryList; track category.categoryId ){
-      <li>
-        <a class="dropdown-item" (click)="onselectCategory(category.categoryId, category.categoryName)">
-          {{ category.categoryName }}
-        </a>
-        <hr class="dropdown-divider">
-      </li>   
-    } 
-    </ul>
-  </div>
-</div>
+          <ul class="dropdown-menu dropdown-full-width" aria-labelledby="categoryDropdown">
+            <li>
+              <a class="dropdown-item" (click)="onselectAllCategories()">
+                All Categories
+              </a>
+              <hr class="dropdown-divider">
+            </li>
+            @for(category of categoryList; track category.categoryId ){
+            <li>
+              <a class="dropdown-item" (click)="onselectCategory(category.categoryId, category.categoryName)">
+                {{ category.categoryName }}
+              </a>
+              <hr class="dropdown-divider">
+            </li>
+            }
+          </ul>
+        </div>
+      </div>
 
       <!-- Search Field + Button -->
       <div class="col-12 col-md-7 d-inline-block">
         <form class="d-flex" role="search">
-          <input
-            class="form-control me-2"
-             [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}"
-            type="search"
-            placeholder="Search for items..."
-            aria-label="Search"
-          />
-          <button class="btn border-secondary" type="submit"><i class="bi bi-search"></i></button>   
-     </form>      
+          <input class="form-control me-2" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}" type="search"
+            placeholder="Search for items..." aria-label="Search" />
+          <button class="btn border-secondary" type="submit"><i class="bi bi-search"></i></button>
+        </form>
       </div>
 
- <div class="d-inline-block position-relative dropdown w-auto">
-        <button class="btn btn-sm button-primary"><i class="bi bi-heart fs-6 cursor-pointer" id="wishlistDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
-        @if(wishlist.length && currentRole==='Customer'){
+      <div class="d-inline-block position-relative dropdown w-auto">
+        <button class="btn btn-sm button-primary"><i class="bi bi-heart fs-6 cursor-pointer" id="wishlistDropdown"
+            role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+          @if(wishlist.length && currentRole==='Customer'){
           <span class="badge bg-danger position-absolute top-0 start-100 translate-middle badge-rounded-pill">
-          {{ wishlist.length}}
-        </span>
-      }
-        @if(wishlist.length===0){
-        <span class="badge bg-danger position-absolute top-0 start-100 translate-middle badge-rounded-pill">
-          {{ 0 }}
-        </span>
-        }
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="wishlistDropdown">
-          @if(wishlist.length === 0){
-          <li  class="dropdown-item text-muted">
-            No items in wishlist
-          </li>
-        }
-        @for(item of wishlist ; track item.id){
-          <li class="dropdown-item small d-flex align-items-center justify-content-between px-0">
-            <div class="d-flex align-items-center">
-            <i class="bi bi-heart-fill px-2"></i> {{ item.productShortName }}
-            </div>
-            <button class="btn btn-sm" (click)="addToWishlist(item)">
+            {{ wishlist.length}}
+          </span>
+          }
+          @if(wishlist.length===0){
+          <span class="badge bg-danger position-absolute top-0 start-100 translate-middle badge-rounded-pill">
+            {{ 0 }}
+          </span>
+          }
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="wishlistDropdown">
+            @if(wishlist.length === 0){
+            <li class="dropdown-item text-muted">
+              No items in wishlist
+            </li>
+            }
+            @for(item of wishlist ; track item.id){
+            <li class="dropdown-item small d-flex align-items-center justify-content-between px-0">
+              <div class="d-flex align-items-center">
+                <i class="bi bi-heart-fill px-2"></i> {{ item.productShortName }}
+              </div>
+              <button class="btn btn-sm" (click)="addToWishlist(item)">
                 <i class="bi bi-x"></i>
               </button>
-          </li>
-          <hr class="dropdown-devider m-0">
-        }
-        </ul>
+            </li>
+            <hr class="dropdown-devider m-0">
+            }
+          </ul>
         </button>
       </div>
-     
-    
-     <div class="d-inline-block position-relative dropdown w-auto">
-        <button class="btn btn-sm button-primary"><i class="bi bi-cart fs-6 cursor-pointer" id="cartDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
-        @if(cartProductList.length && currentRole==='Customer'){
+
+
+      <div class="d-inline-block position-relative dropdown w-auto">
+        <button class="btn btn-sm button-primary"><i class="bi bi-cart fs-6 cursor-pointer" id="cartDropdown"
+            role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+          @if(cartProductList.length && currentRole==='Customer'){
           <span class="badge bg-success position-absolute top-0 start-100 translate-middle badge-rounded-pill">
-          {{ cartProductList.length}}
-        </span>
-      }
-      @if(cartProductList.length===0){
-        <span  class="badge bg-success position-absolute top-0 start-100 translate-middle badge-rounded-pill">
-          {{ 0 }}
-        </span>
-      }
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cartDropdown">
-          @if(cartProductList.length === 0){
-          <li class="dropdown-item text-muted">No items in cart</li>
+            {{ cartProductList.length}}
+          </span>
           }
-          @for(item of cartProductList; track item.cartId){
-          <li class="dropdown-item small d-flex align-items-center justify-content-between px-0">
+          @if(cartProductList.length===0 || currentRole==='User'){
+          <span class="badge bg-success position-absolute top-0 start-100 translate-middle badge-rounded-pill">
+            {{ 0 }}
+          </span>
+          }
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cartDropdown">
+            @if(cartProductList.length === 0){
+            <li class="dropdown-item text-muted">No items in cart</li>
+            }
+            @for(item of cartProductList; track item.cartId){
+            <li class="dropdown-item small d-flex align-items-center justify-content-between px-0">
               <div class="d-flex align-items-center">
                 <img [src]="item.productImageUrl" style="height:2rem; width:2rem" class="mx-1">
                 <span>{{ item.productShortName }}</span>
@@ -110,15 +100,15 @@
                 <i class="bi bi-x"></i>
               </button>
             </li>
-              <hr class="dropdown-divider m-0">
+            <hr class="dropdown-divider m-0">
             }
-        </ul> 
+          </ul>
         </button>
       </div>
 
-      </div>
     </div>
   </div>
+</div>
 
 
 <div class="row">
@@ -129,32 +119,28 @@
   <div class="col-12 col-lg-10">
     <div class="row">
       @for(product of productList | productSearch:searchText ; track product.productId){
-      <div
-        class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-        <div class="card" style="height:450px">
-          <img
-            [src]="product.productImageUrl"
-            class="card-img-top" style="min-height:300px;  max-height:300px"
-            alt="{{ product.productShortName }}"
-          />
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+
+        <div class="card h-100 border-secondary">
+          <img [src]="product.productImageUrl" class="card-img-top" alt="{{ product.productName }}" height="350px">
           <div class="card-body">
-            <h5 class="card-title">{{ product.productShortName }}</h5>
-            <p class="card-text text-muted">{{ product.categoryName }}</p>
-            <div class="d-flex justify-content-between">
-              <button class="btn button-primary" (click)="onViewDetails(product)">View Details</button>
-              <button 
-    (click)="addToWishlist(product)" 
-    class="btn btn-outline-danger">
-    <i [ngClass]="{
-      'bi bi-heart-fill': isInWishlist(product.productId),'bi bi-heart': !isInWishlist(product.productId)}"></i>
-  </button>
-            </div>
+            <h5 class="card-title mb-0">{{ product.productName }}</h5>
+            
+            <p class="fw-bold">&#8377; {{ product.productPrice }}</p>
+            <p class="text-muted">
+              {{ product.categoryName }}</p>
+          </div>
+          <div class="card-footer d-flex justify-content-between bgcolor-secondary">
+
+            <button class="btn btn-sm btn-warning text-white" (click)="onViewDetails(product)">View Details</button>
+
+            <button class="btn btn-sm btn-danger" (click)="addToWishlist(product)"><i
+                [ngClass]="{
+      'bi bi-heart-fill': isInWishlist(product.productId),'bi bi-heart': !isInWishlist(product.productId)}"></i></button>
           </div>
         </div>
       </div>
-    }
+      }
     </div>
-  
-  </div>
 
- 
+  </div>

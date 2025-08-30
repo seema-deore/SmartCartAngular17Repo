@@ -72,7 +72,7 @@
                 }
                 </div>
 
-                <div class="form-group">
+                <div class="form-group mb-2">
                     <input type="text" formControlName="mobnumber" class="form-control" pattern="[0-9 ]*" placeholder="MobileNumber" required maxlength="10" minlength="10">
                     @if(mobnumber?.invalid && (mobnumber?.dirty || mobnumber?.touched)){
                     <div class="error">                       
@@ -84,15 +84,19 @@
                     </div>
                    }
                 </div>
-            
-                <div class="form-group text-center">
-                <button type="submit" [disabled]="!registerForm.valid" class="btn button-primary px-5">Submit</button>
-                <button  class="btn button-primary px-5" (click)="onCancel()">Cancel</button>
+            <div style="color:rgb(245, 109, 5)"
+                role="alert"
+                [style.visibility]="registerError ? 'visible' : 'hidden'">
+                {{ registerError || 'placeholder text' }}
+            </div>
+                <div class="form-group  d-flex  flex-md-row gap-2 text-center">
+                <button type="submit" [disabled]="!registerForm.valid" class="btn button-primary px-5 pb-4">Submit</button>
+                <button  class="btn button-primary px-5 pb-4" (click)="onCancel()">Cancel</button>
 
-                <h6 style="text-align: center;color:orange;">{{registerError}}</h6>
+                <!-- <h6 style="text-align: center;color:orange;">{{registerError}}</h6>
                 @if(registerError!=''){
                 <h6><a (click)="onTry()">Try Again</a></h6>
-                }
+                } -->
             </div>
                 
                               
