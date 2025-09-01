@@ -1,7 +1,7 @@
 .checkout-container {
-  max-width: 900px;
+  /* max-width: 900px; */
   margin: auto;
-  margin-top:80px;
+  margin-top:60px;
 }
 
 table img {

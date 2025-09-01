@@ -1,5 +1,12 @@
-<div class="checkout-container">  
 
+<div class="row">
+<div class="col-lg-1"></div>
+
+<div class="col-lg-10 checkout-container">  
+
+<button class="btn bgcolor-secondary text-primary  my-2 px-4">
+            <a [routerLink]="['/customer/products']" routerLinkActive="router-link-active" >Go To Product List</a></button>
+  
   <table class="table table-bordered table-hover text-center">
     <thead>
       <tr>
@@ -7,6 +14,8 @@
         <th>Product</th>
         <th>Category</th>
         <th>Price (₹)</th>
+        <th>Discount(₹)</th>
+        <th>Final Price(₹)</th>
         <th>Quantity</th>
         <th>Subtotal (₹)</th>
         <th>Remove</th>
@@ -20,14 +29,16 @@
         </td>
         <td>{{ item.productName }}</td>
         <td>{{ item.categoryName }}</td>
-        <td>{{ item.productPrice }}</td>
+        <td class="text-end">{{ item.productPrice }}</td>
+        <td class="text-end">{{ item.productPrice * 0.25 | number:'1.0-0'}}</td>
+        <td class="text-end">{{ item.discountedPrice }}</td>
         <td>
           <input type="number" class="form-control text-center" 
                  [(ngModel)]="item.quantity" readonly
                  (ngModelChange)="addUpdatedToCart(item,$event)" 
                  min="1">
         </td>
-        <td>{{ item.productPrice * item.quantity }}</td>
+        <td class="text-end">{{ item.discountedPrice * item.quantity }}</td>
         <td>
           <button class="btn btn-danger btn-sm" (click)="removeItem(item.cartId)">X</button>
         </td>
@@ -36,8 +47,9 @@
     </tbody>
     <tfoot>
       <tr>
-        <td colspan="5" class="text-end"><strong>Total</strong></td>
-        <td colspan="2"><strong>₹{{ totalAmount }}</strong></td>
+        <td colspan="7" class="text-end"><strong>Total</strong></td>
+        <td class="text-success fw-bold text-end"><strong>₹ {{ getCartSubtotal() }}</strong></td>
+        <td></td>
       </tr>
     </tfoot>
   </table>
@@ -45,3 +57,6 @@
   <button class="btn btn-success w-100 mt-3"><a [routerLink]="['/customer/checkout']" routerLinkActive="router-link-active" >Place Order</a></button>
 </div>
 
+
+<div class="col-lg-1"></div>
+</div>

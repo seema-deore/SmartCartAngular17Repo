@@ -1,9 +1,13 @@
 
-<div class="checkout-container">
+
+<button class="btn bgcolor-secondary text-primary  m-3 px-4"style="width: fit-content;">
+            <a [routerLink]="['/customer/products']" routerLinkActive="router-link-active" >Go To Product List</a></button>
+    
+<div>
 
   <form [formGroup]="checkoutForm" (ngSubmit)="placeOrder()">
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <h3 >Customer Details</h3>
     <div class="form-group">
       <label>Full Name</label>
@@ -26,57 +30,58 @@
     </div>
 
     <div class="form-group">
-      <label>Payment Method</label>
-      <select class="form-control" formControlName="paymentMethod">
+      <label class="mb-2">Payment Method</label>
+      <select class="form-select" formControlName="paymentMethod">
         <option value="COD">Cash on Delivery</option>
         <option value="Card">Credit/Debit Card</option>
         <option value="UPI">UPI</option>
       </select>
     </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-8">
             <h3 >Order Summary</h3>     
 
-          <table class="table table-bordered table-hover text-center">
-            <thead>
-              <tr>
-                <th>Image</th>
-                <th>Product</th>
-                <th>Category</th>
-                <th>Price (₹)</th>
-                <th>Quantity</th>
-                <th>Subtotal (₹)</th>
-                
-              </tr>
-            </thead>
-            <tbody>
-             @for(item of cartProductList; track item.cartId){
-              <tr>
-                <td>
-                  <img [src]="item.productImageUrl" alt="{{ item.productName }}" width="60" height="60">
-                </td>
-                <td>{{ item.productName }}</td>
-                <td>{{ item.categoryName }}</td>
-                <td>{{ item.productPrice }}</td>
-                <td>
-                  {{item.quantity}}
-                </td>
-                <td>{{ item.productPrice * item.quantity }}</td>
-                <td>
-                  <!-- <button class="btn btn-danger btn-sm" (click)="removeItem(item.cartId)">X</button> -->
-                </td>
-              </tr>
-            }
-            </tbody>
-            <tfoot>
-              <tr>
-                <td colspan="5" class="text-end"><strong>Total</strong></td>
-                <td colspan="2"><strong>₹{{ totalAmount }}</strong></td>
-              </tr>
-            </tfoot>
-          </table>
+         <table class="table table-bordered table-hover text-center">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Product</th>
+        <th>Category</th>
+        <th>Price (₹)</th>
+        <th>Discount(₹)</th>
+        <th>Final Price(₹)</th>
+        <th>Quantity</th>
+        <th>Subtotal (₹)</th>        
+      </tr>
+    </thead>
+    <tbody>
+      @for(item of cartProductList; track item.cartId){
+      <tr>
+        <td>
+          <img [src]="item.productImageUrl" alt="{{ item.productName }}" width="60" height="60">
+        </td>
+        <td>{{ item.productName }}</td>
+        <td>{{ item.categoryName }}</td>
+        <td class="text-end">{{ item.productPrice }}</td>
+        <td class="text-end">{{ item.productPrice * 0.25 | number:'1.0-0'}}</td>
+        <td class="text-end">{{ item.discountedPrice }}</td>
+        <td>{{item.quantity}}    
+        </td>
+        <td class="text-end">{{ item.discountedPrice * item.quantity }}</td>
+        
+      </tr>
+    }
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="7" class="text-end"><strong>Total</strong></td>
+        <td class="text-success fw-bold text-end"><strong>₹ {{ getCartSubtotal() }}</strong></td>
+        
+      </tr>
+    </tfoot>
+  </table>
 
-          <button  type="submit" class="btn btn-success w-100 mt-3">Place Order</button>
+          <button  type="submit" class="btn btn-success w-100 my-3">Place Order</button>
         </div>
     </div>
     

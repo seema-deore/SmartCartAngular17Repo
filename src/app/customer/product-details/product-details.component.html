@@ -14,9 +14,11 @@
      <p class="text-muted">{{productDescription}}</p>
       <!-- Price and Discount -->
       <div class="mb-3">
-        <h4 class="text-success fw-bold">&#8377; {{product.productPrice}} 
-          <small class="text-muted text-decoration-line-through fs-6 ms-2"> {{product.productPrice + (product.productPrice *.25)}}</small>
+        <h4>&#8377; <span class="text-muted text-decoration-line-through fs-6 ms-2">{{product.productPrice}} </span>                   
           <span class="badge bg-danger ms-2">25% OFF</span>
+        </h4>
+        <h4 class="text-success fw-bold">
+          &#8377; {{(product.productPrice - (product.productPrice * 0.25)) | number:'1.0-0'}}
         </h4>
       </div>
 

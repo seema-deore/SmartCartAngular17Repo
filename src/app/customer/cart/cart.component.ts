@@ -21,19 +21,29 @@ quantity:number=0;
   }
 getCartProductList(){
   this.productService.getCartProductByCustomerId(379).subscribe({
-  next:(res:any)=>{
-     this.cartProductList=res.data;
-     console.log(this.cartProductList);
-     
+  next: (res: any) => {
+    if (res.data) {
+      this.cartProductList = res.data.map((item: any) => {
+        const discount = Math.round(item.productPrice * 0.25); // 25% discount
+        const discountedPrice = item.productPrice - discount;
+        return {
+          ...item,
+          discountedPrice
+        };
+      });
+    }
   },
-  error:(err:any)=>{
-
-  },
-})}
-  get totalAmount(): number {
-    return this.cartProductList.reduce((sum:number, item:any) => sum + (item.productPrice * item.quantity), 0);
+  error: (err) => {
+    console.error(err);
   }
-
+});
+}
+  getCartSubtotal(): number {
+  return this.cartProductList.reduce(
+    (sum: number, item: any) => sum + (item.discountedPrice * item.quantity),
+    0
+  );
+}
 
 addUpdatedToCart(item:any, newQuantity: number){
   
@@ -67,5 +77,11 @@ console.log(data);
     this.getCartProductList(); // Refresh cart list when updated       
  })
 }
-  }
+
+getDiscountedPrice(price: number): number {
+  const discount = Math.round(price * 0.25);
+  return price - discount;
+}
+  
+}
 

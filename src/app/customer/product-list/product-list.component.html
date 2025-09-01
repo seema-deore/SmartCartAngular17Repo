@@ -126,7 +126,9 @@
           <div class="card-body">
             <h5 class="card-title mb-0">{{ product.productName }}</h5>
             
-            <p class="fw-bold">&#8377; {{ product.productPrice }}</p>
+            <p>&#8377; <span class="text-muted text-decoration-line-through">{{ product.productPrice }} </span>
+              <span class="badge bg-danger ms-2">25% OFF</span>
+            </p>
             <p class="text-muted">
               {{ product.categoryName }}</p>
           </div>
