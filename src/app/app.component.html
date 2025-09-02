@@ -1,7 +1,32 @@
 <app-header></app-header>
-   
+ <div class="row">
+    <div class="col-lg-2"></div>
+
+@if(showIntro){
+   <div class="col-lg-9 feature-container mt-4">
+   <h2 class="mt-5 text-primary"> Angular 17 Highlights in SmartCart</h2>
+   <hr>
+
+  <div *ngFor="let feature of visibleFeatures" class="fade-in feature-line">
+    <span class="fw-bold">{{ feature.heading }}</span> <span class="fw-lighter fs-5"> {{feature.data }}</span>
+  </div>
+
+  @if(currentIndex === features.length){
+  <button 
+          class="btn bgcolor-primary text-white mt-2 px-4"
+          (click)="startDemo()">
+          Start SmartCart
+  </button>
+}
+</div>
+    }
+<div class="col-lg-1"></div>
+</div>
+
+@if(!showIntro){
 <div class="main-content">
     <router-outlet></router-outlet>
 </div>
+}
 
 <app-footer></app-footer>

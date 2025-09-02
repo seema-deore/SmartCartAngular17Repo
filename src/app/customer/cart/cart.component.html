@@ -49,12 +49,12 @@
       <tr>
         <td colspan="7" class="text-end"><strong>Total</strong></td>
         <td class="text-success fw-bold text-end"><strong>₹ {{ getCartSubtotal() }}</strong></td>
-        <td></td>
+        <td><button class="btn btn-success"><a [routerLink]="['/customer/checkout']" routerLinkActive="router-link-active" >Place Order</a></button></td>
       </tr>
     </tfoot>
   </table>
 
-  <button class="btn btn-success w-100 mt-3"><a [routerLink]="['/customer/checkout']" routerLinkActive="router-link-active" >Place Order</a></button>
+  
 </div>
 
 

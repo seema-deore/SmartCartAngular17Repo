@@ -1,5 +1,21 @@
+
+.feature-container {
+  font-size: 1.3rem;
+  font-weight: lighter;
+  height: 650px; 
+}
+
+.feature-line {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+  margin: 8px 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 .main-content {
   margin-top: 56px;
-  min-height: 400px;
-  
+  /* min-height: 400px;   */
 }

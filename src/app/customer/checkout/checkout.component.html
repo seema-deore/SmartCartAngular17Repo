@@ -37,6 +37,8 @@
         <option value="UPI">UPI</option>
       </select>
     </div>
+    
+          <button  type="submit" class="btn btn-success w-auto  px-5">Place Order</button>
         </div>
         <div class="col-lg-8">
             <h3 >Order Summary</h3>     
@@ -75,13 +77,11 @@
     <tfoot>
       <tr>
         <td colspan="7" class="text-end"><strong>Total</strong></td>
-        <td class="text-success fw-bold text-end"><strong>₹ {{ getCartSubtotal() }}</strong></td>
-        
+        <td class="text-success fw-bold text-end"><strong>₹ {{ getCartSubtotal() }}</strong></td>        
       </tr>
     </tfoot>
   </table>
 
-          <button  type="submit" class="btn btn-success w-100 my-3">Place Order</button>
         </div>
     </div>
     

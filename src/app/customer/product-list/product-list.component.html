@@ -60,7 +60,8 @@
             @for(item of wishlist ; track item.id){
             <li class="dropdown-item small d-flex align-items-center justify-content-between px-0">
               <div class="d-flex align-items-center">
-                <i class="bi bi-heart-fill px-2"></i> {{ item.productShortName }}
+                <img [src]="item.productImageUrl" style="height:2rem; width:2rem" class="mx-1">
+                 {{ item.productShortName }}
               </div>
               <button class="btn btn-sm" (click)="addToWishlist(item)">
                 <i class="bi bi-x"></i>
