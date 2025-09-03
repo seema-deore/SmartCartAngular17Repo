@@ -2,11 +2,12 @@
 <div class="row">
 <div class="col-lg-1"></div>
 
-<div class="col-lg-10 checkout-container">  
+<div class="col-lg-10">  
 
-<button class="btn bgcolor-secondary text-primary  my-2 px-4">
+<button class="btn bgcolor-secondary text-primary  mt-5 px-4">
             <a [routerLink]="['/customer/products']" routerLinkActive="router-link-active" >Go To Product List</a></button>
-  
+
+  <div class="set-scroll mt-2">
   <table class="table table-bordered table-hover text-center">
     <thead>
       <tr>
@@ -29,18 +30,19 @@
         </td>
         <td>{{ item.productName }}</td>
         <td>{{ item.categoryName }}</td>
-        <td class="text-end">{{ item.productPrice }}</td>
-        <td class="text-end">{{ item.productPrice * 0.25 | number:'1.0-0'}}</td>
-        <td class="text-end">{{ item.discountedPrice }}</td>
+        <td class="text-end">{{ item.productPrice  | number:'1.0-0' }}</td>
+        <td class="text-end">{{ item.discount}}</td>
+        <td class="text-end">{{ item.discountedPrice}}</td>
         <td>
           <input type="number" class="form-control text-center" 
                  [(ngModel)]="item.quantity" readonly
                  (ngModelChange)="addUpdatedToCart(item,$event)" 
                  min="1">
         </td>
-        <td class="text-end">{{ item.discountedPrice * item.quantity }}</td>
+        <td class="text-end">{{ item.discountedPrice * item.quantity}}</td>
         <td>
-          <button class="btn btn-danger btn-sm" (click)="removeItem(item.cartId)">X</button>
+          <button class="btn btn-danger btn-sm " data-bs-toggle="modal" data-bs-target="#exampleModal" 
+          (click)="getCartId(item.cartId)">X</button>
         </td>
       </tr>
     }
@@ -49,14 +51,35 @@
       <tr>
         <td colspan="7" class="text-end"><strong>Total</strong></td>
         <td class="text-success fw-bold text-end"><strong>₹ {{ getCartSubtotal() }}</strong></td>
-        <td><button class="btn btn-success"><a [routerLink]="['/customer/checkout']" routerLinkActive="router-link-active" >Place Order</a></button></td>
+        <td><button class="btn btn-success"[disabled]='cartProductList.length==0'><a [routerLink]="['/customer/checkout']" routerLinkActive="router-link-active" >
+          Place Order</a></button></td>
       </tr>
     </tfoot>
   </table>
-
+</div>
   
 </div>
 
 
 <div class="col-lg-1"></div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"> Delete product from cart</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Do you want to delete?
+      </div>
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-success btn-sm px-2" (click)="onRemoveCartItem()" data-bs-dismiss="modal">Ok</button>
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
 </div>

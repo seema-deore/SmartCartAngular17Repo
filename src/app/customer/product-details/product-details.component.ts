@@ -12,6 +12,7 @@ export interface Review {
   rating: number; // 1–5
 }
 
+
 @Component({
   selector: 'app-product-details',
   standalone: true,
@@ -21,7 +22,7 @@ export interface Review {
 })
 
 export class ProductDetailsComponent implements OnInit{
-
+productAdded: boolean=false;
  productDescription:string="Text containing information about product like quality,color,size,material used,duration.Also include text that explain in brief how selected product is better than other local products.   "
   product:any=[];
   cartProductList:any=[];
@@ -103,7 +104,7 @@ onAddToCart(product:any){
 }
 this.productService.addProductToCart(data).subscribe({
   next:(res:any)=>{
-     alert("added");  
+     this.productAdded = true;  
    this.cartService.notifyCartUpdated(); 
    
     //  this.getCartProductList(); // in productList

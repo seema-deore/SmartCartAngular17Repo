@@ -1,22 +1,25 @@
-<div style="margin-top:80px">
+<div class="row">
+<div class="col-lg-1"></div>
+<div class="col-lg-3 mt-5" >
+  <h4 class="mb-2">Add Category</h4>
 <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()" >
-  <div class="row">
-    <div class="col-lg-3 col-md-6">
-      
-      <input type="text" class="form-control my-2" formControlName="categoryName" placeholder="Enter category name" />
+  
+    <div> 
+      <label>Category Name</label>     
+      <input type="text" class="form-control my-2" formControlName="categoryName" />
       <div class="error" *ngIf="categoryForm.get('CategoryName')?.touched && categoryForm.get('categoryName')?.invalid">
         Category Name is required
       </div>
-    </div>
-
-    <div class="col-lg-3 col-md-6">      
+    <div>  
+      <label>Parent Category ID</label>    
       <input type="number" class="form-control my-2" formControlName="parentCategoryId" placeholder="Parent Category ID"/>
     </div>
 
-    <div class="col-lg-3 col-md-6">      
+    <div> 
+      <label>User ID</label>  
       <input type="number" class="form-control my-2" formControlName="userId" placeholder="User ID"/>
     </div>
-    <div class="col-lg-3 col-md-6 my-2" >
+    <div class="my-2" >
     <button class="form-control btn bgcolor-primary text-white" type="submit">
       {{ isEditing ? 'Update Category' : 'Add Category' }}
     </button>
@@ -24,9 +27,8 @@
     </div>
 </form>
 </div>
-<div class="category-management-container"> 
-  <!-- Category Form -->
-    <!-- Category Table -->
+<div class="col-lg-7 category-management-container"> 
+   <h4 class="mb-2">Update / Delete Category</h4>
   <table class="category-table">
     <thead>
       <tr>
@@ -50,4 +52,6 @@
       </tr>
     </tbody>
   </table>
+</div>
+<div class="col-lg-1"></div>
 </div>

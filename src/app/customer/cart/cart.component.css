@@ -1,8 +1,4 @@
-.checkout-container {
-  /* max-width: 900px; */
-  margin: auto;
-  margin-top:60px;
-}
+
 
 table img {
   border-radius: 5px;
@@ -10,4 +6,9 @@ table img {
 
 tfoot td {
   font-size: 1.2em;
+}
+.set-scroll {
+     display: block;
+    overflow-x: auto;
+    white-space: nowrap;
 }

@@ -25,6 +25,7 @@ productList:any = [];
 wishlist:any[] = [];
 cartProductList:any []= [];
 currentRole:string='';
+currentCartId:any;
 constructor(private wishlistService: WishlistService, private cartService: CartService,
             private productService: ProductService,private auth: AuthService,
             private router: Router) {}
@@ -119,11 +120,13 @@ addToWishlist(product: any): void {
 isInWishlist(productId: number): boolean {
   return this.wishlistService.isInWishlist(productId);
 }
-
-onRemoveCartItem(cartId:any){
+getCartId(cartId:any){
+this.currentCartId=cartId;
+}
+onRemoveCartItem(){
   
-this.productService.deleteProductFromCartById(cartId).subscribe((res:any)=>{
-  alert("item removed")
+this.productService.deleteProductFromCartById(this.currentCartId).subscribe((res:any)=>{
+  // alert("item removed")
  this.cartService.notifyCartUpdated();
       this.getCartProductList(); // Refresh cart list when updated       
  })

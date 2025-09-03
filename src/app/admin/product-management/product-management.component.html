@@ -70,7 +70,8 @@
         </div>
         <div class="card-footer d-flex justify-content-between bgcolor-secondary">
           <button class="btn btn-sm btn-warning" (click)="openEditProduct(product)">Edit</button>
-          <button class="btn btn-sm btn-danger" (click)="deleteProduct(product.productId)">Delete</button>
+          <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="getProductId(product.productId)">Delete</button>
         </div>
       </div>
     </div>
@@ -140,6 +141,24 @@
     </div>
   </div>
 </div>
-
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"> Delete product</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Do you want to delete?
+      </div>
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-success btn-sm px-2" (click)="deleteProduct()" data-bs-dismiss="modal">Ok</button>
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 

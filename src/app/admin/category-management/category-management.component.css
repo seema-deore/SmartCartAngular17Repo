@@ -1,8 +1,6 @@
 .category-management-container {
-  max-width: 800px;
-  margin: 20px auto;
-  
-  max-height: 400px;
+  padding: 3rem; 
+  max-height: 500px;
   overflow-y: auto;
 }
 

@@ -25,7 +25,7 @@ selectedProduct:any;
 selectedProductId: number | null = null;
 modalInstance: any;
 selectedCategoryName: string=''
-
+currentProductId:number=0;
 constructor(private productService: ProductService,private fb: FormBuilder ) {}
 
 ngOnInit(): void {
@@ -160,13 +160,15 @@ console.log(productData);
       });
     }
   }    
-
-  deleteProduct(productId: number) {
-    if (confirm('Are you sure you want to delete this product?')) {
-      this.productService.deleteProductById(productId).subscribe(() => {
+getProductId(productId: number){
+this.currentProductId=productId;
+}
+  deleteProduct() {
+    
+      this.productService.deleteProductById(this.currentProductId).subscribe(() => {
         this.getProductList();
       });
-    }
+    
   }
 
   openModal() {

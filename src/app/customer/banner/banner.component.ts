@@ -19,8 +19,8 @@ export class BannerComponent implements OnInit, AfterViewInit{
 
  largeViewImages: string[] = [
   'assets/images/scrollImg1.jpg',
-  'assets/images/scrollImg2.jpg',
-  'assets/images/scrollImg1.jpg',
+  'assets/images/ring.jpg',
+  'assets/images/hats2.jpg',
   'assets/images/scrollImg2.jpg',  
 ];
 

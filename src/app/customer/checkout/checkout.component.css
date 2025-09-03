@@ -7,3 +7,8 @@
 button {
   width: 100%;
 }
+.set-scroll {
+     display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}

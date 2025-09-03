@@ -97,7 +97,7 @@
                 <img [src]="item.productImageUrl" style="height:2rem; width:2rem" class="mx-1">
                 <span>{{ item.productShortName }}</span>
               </div>
-              <button class="btn btn-sm" (click)="onRemoveCartItem(item.cartId)">
+              <button class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="getCartId(item.cartId)">
                 <i class="bi bi-x"></i>
               </button>
             </li>
@@ -147,3 +147,23 @@
     </div>
 
   </div>
+  
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"> Delete product from cart</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Do you want to delete?
+      </div>
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-success btn-sm px-2" (click)="onRemoveCartItem()" data-bs-dismiss="modal">Ok</button>
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

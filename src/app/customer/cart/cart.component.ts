@@ -13,6 +13,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './cart.component.css'
 })
 export class CartComponent implements OnInit {
+currentCartId: number=0;
 quantity:number=0;
  cartProductList:any;
   constructor(private productService:ProductService, private cartService: CartService){}
@@ -24,10 +25,11 @@ getCartProductList(){
   next: (res: any) => {
     if (res.data) {
       this.cartProductList = res.data.map((item: any) => {
-        const discount = Math.round(item.productPrice * 0.25); // 25% discount
-        const discountedPrice = item.productPrice - discount;
+        const discount = Math.round(Math.round(item.productPrice) * 0.25); // 25% discount
+        const discountedPrice = Math.round(item.productPrice - discount);
         return {
           ...item,
+          discount,
           discountedPrice
         };
       });
@@ -69,10 +71,12 @@ console.log(data);
 // })
 }   
   
-
-  removeItem(cartId: number) {
-    this.productService.deleteProductFromCartById(cartId).subscribe((res:any)=>{
-      alert("item removed")
+getCartId(cartId:number){
+  this.currentCartId=cartId;
+}
+  onRemoveCartItem() {
+    this.productService.deleteProductFromCartById(this.currentCartId).subscribe((res:any)=>{
+    
     this.cartService.notifyCartUpdated();
     this.getCartProductList(); // Refresh cart list when updated       
  })

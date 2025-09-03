@@ -32,10 +32,11 @@ export class CheckoutComponent implements OnInit{
   next: (res: any) => {
     if (res.data) {
       this.cartProductList = res.data.map((item: any) => {
-        const discount = Math.round(item.productPrice * 0.25); // 25% discount
-        const discountedPrice = item.productPrice - discount;
+        const discount = Math.round(Math.round(item.productPrice) * 0.25); // 25% discount
+        const discountedPrice = Math.round(item.productPrice - discount);
         return {
           ...item,
+          discount,
           discountedPrice
         };
       });

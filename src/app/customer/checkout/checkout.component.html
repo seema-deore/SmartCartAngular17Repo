@@ -7,7 +7,49 @@
 
   <form [formGroup]="checkoutForm" (ngSubmit)="placeOrder()">
     <div class="row">
-        <div class="col-lg-4">
+      <div class="col-lg-8 px-lg-5">
+            <h3 >Order Summary</h3>     
+<div class="set-scroll">
+         <table class="table table-bordered table-hover text-center">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Product</th>
+        <th>Category</th>
+        <th>Price (₹)</th>
+        <th>Discount(₹)</th>
+        <th>Final Price(₹)</th>
+        <th>Quantity</th>
+        <th>Subtotal (₹)</th>        
+      </tr>
+    </thead>
+    <tbody>
+      @for(item of cartProductList; track item.cartId){
+      <tr>
+        <td>
+          <img [src]="item.productImageUrl" alt="{{ item.productName }}" width="60" height="60">
+        </td>
+        <td>{{ item.productName }}</td>
+        <td>{{ item.categoryName }}</td>
+        <td class="text-end">{{ item.productPrice  | number:'1.0-0'}}</td>
+        <td class="text-end">{{ item.discount}}</td>
+        <td class="text-end">{{ item.discountedPrice}}</td>
+        <td>{{item.quantity}}    
+        </td>
+        <td class="text-end">{{ item.discountedPrice * item.quantity | number:'1.0-0'}}</td>        
+      </tr>    
+    }
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="7" class="text-end"><strong>Total</strong></td>
+        <td class="text-success fw-bold text-end"><strong>₹ {{ getCartSubtotal() }}</strong></td>        
+      </tr>
+    </tfoot>
+    </table>  
+  </div>    
+    </div>
+    <div class="col-lg-4 px-lg-5">
             <h3 >Customer Details</h3>
     <div class="form-group">
       <label>Full Name</label>
@@ -31,59 +73,16 @@
 
     <div class="form-group">
       <label class="mb-2">Payment Method</label>
-      <select class="form-select" formControlName="paymentMethod">
+      <select class="form-select mb-5" formControlName="paymentMethod">
         <option value="COD">Cash on Delivery</option>
         <option value="Card">Credit/Debit Card</option>
         <option value="UPI">UPI</option>
       </select>
-    </div>
-    
-          <button  type="submit" class="btn btn-success w-auto  px-5">Place Order</button>
-        </div>
-        <div class="col-lg-8">
-            <h3 >Order Summary</h3>     
-
-         <table class="table table-bordered table-hover text-center">
-    <thead>
-      <tr>
-        <th>Image</th>
-        <th>Product</th>
-        <th>Category</th>
-        <th>Price (₹)</th>
-        <th>Discount(₹)</th>
-        <th>Final Price(₹)</th>
-        <th>Quantity</th>
-        <th>Subtotal (₹)</th>        
-      </tr>
-    </thead>
-    <tbody>
-      @for(item of cartProductList; track item.cartId){
-      <tr>
-        <td>
-          <img [src]="item.productImageUrl" alt="{{ item.productName }}" width="60" height="60">
-        </td>
-        <td>{{ item.productName }}</td>
-        <td>{{ item.categoryName }}</td>
-        <td class="text-end">{{ item.productPrice }}</td>
-        <td class="text-end">{{ item.productPrice * 0.25 | number:'1.0-0'}}</td>
-        <td class="text-end">{{ item.discountedPrice }}</td>
-        <td>{{item.quantity}}    
-        </td>
-        <td class="text-end">{{ item.discountedPrice * item.quantity }}</td>
-        
-      </tr>
-    }
-    </tbody>
-    <tfoot>
-      <tr>
-        <td colspan="7" class="text-end"><strong>Total</strong></td>
-        <td class="text-success fw-bold text-end"><strong>₹ {{ getCartSubtotal() }}</strong></td>        
-      </tr>
-    </tfoot>
-  </table>
-
-        </div>
-    </div>
+    </div> 
+    <button  type="submit" class="btn btn-success w-auto  px-5 mb-3 float-end" [disabled]='cartProductList.length==0'>Place Order</button>          
+  </div>
+  
+  </div>
     
   </form>
 </div>

@@ -10,12 +10,23 @@
   animation: fadeIn 1s forwards;
   margin: 8px 0;
 }
-
+.set-data{
+  font-size:1.2rem
+}
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 .main-content {
   margin-top: 56px;
-  /* min-height: 400px;   */
+  min-height: 600px;  
+}
+@media (max-width: 768px) {
+  .feature-container {
+    height:900px;
+    font-size:1rem;
+  }
+  .set-data{
+  font-size:.8rem
+}
 }

@@ -9,6 +9,11 @@
 
     <!-- Right: Product Details -->
     <div class="col-md-4">
+      @if(productAdded){
+          <div class="alert alert-success" role="alert">
+          <i class="bi bi-check-circle-fill mx-2 "></i>Added to cart Successfully!!
+        </div>
+    }
       <h2 class="fw-bold">{{product.productShortName}}</h2>
       <!-- <p class="text-muted">{{product.productDescription}}</p> -->
      <p class="text-muted">{{productDescription}}</p>

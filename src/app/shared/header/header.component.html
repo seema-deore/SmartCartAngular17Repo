@@ -24,9 +24,11 @@
           </a>
           <ul class="dropdown-menu ">
             <li><a class="dropdown-item" routerLink="/about">About Us</a></li>
+            <li class="dropdown-divider"></li>
             <li><a class="dropdown-item" routerLink="/contact">Contact Us</a></li>
+            <li class="dropdown-divider"></li>
             <li><a class="dropdown-item" routerLink="/services">Services</a></li>
-          </ul>
+            </ul>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white" routerLink="/shop">Shop</a>
@@ -44,7 +46,9 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" [routerLink]="['/customer/cart']">Cart</a></li>
+            <li class="dropdown-divider"></li>
             <li><a class="dropdown-item" [routerLink]="['/customer/checkout']">Check List</a></li>
+            <li class="dropdown-divider"></li>
             <li><a class="dropdown-item" [routerLink]="['/customer/wishlist']">Wish List</a></li>
           </ul>
         </li>
@@ -80,6 +84,7 @@
       </a>       
       <ul class="dropdown-menu dropdown-menu-end">
         <li><a class="dropdown-item" routerLink = "/login">Login</a></li>
+        <li class="dropdown-divider"></li>
         <li><a class="dropdown-item" routerLink = "/register">Register</a></li>
       </ul>       
     </div>

@@ -49,7 +49,7 @@ features: any = [
   data:" Leveraged Angular 17 typed reactive forms for product add/update."
 },
 { heading:"✔ Modern CSS Integration - ",
-  data: "Scoped styles and utility classes with Bootstrap integration."
+  data: "Scoped styles and utility classes with Bootstrap integration for Responsive Web design."
 }]
 
   visibleFeatures: any = [];
@@ -67,7 +67,7 @@ showFeaturesOneByOne() {
       } else {
         clearInterval(interval);
       }
-    }, 500);
+    }, 300);
   }
 
   startDemo() {
