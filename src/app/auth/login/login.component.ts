@@ -74,7 +74,7 @@ this.authService.login(loginData).subscribe({
         
              if(this.authService.isAdmin()){
             
-                this.router.navigate(['/admin/dashboard']);
+                this.router.navigate(['/admin/overview']);
              }
              else if(this.authService.isCustomer()){ 
                this.authService.setRole("Customer"); 
@@ -100,29 +100,4 @@ this.authService.login(loginData).subscribe({
     this.errorMsg='';
   }
 }
-    // this.authService.login(loginData).subscribe((res:any)=>{
-    //   // next: (res) => {
-    //     console.log('Login successful:', res);
-
-    //     localStorage.setItem('token', res.token);
-    //     console.log(res.token)
-    //     // localStorage.setItem('role', res.role);    
-        
-    //     if(this.authService.isLoggedIn()){
-    //       this.currentRole= localStorage.getItem('role')||'';
-    //       this.authService.setRole(this.currentRole);
-          
-    //         if(this.authService.isAdmin()){
-              
-    //            this.router.navigate(['/admin/dashboard']);
-    //         }
-    //         else if(this.authService.isCustomer()){ 
-    //           this.authService.setRole("Customer"); 
-    //             this.router.navigate(['/customer/home']);
-    //     }    }   
-    //   },
-    //   // error: (err:any) => {
-    //   //   console.error('Login failed:', err);
-    //   //   alert('Invalid login credentials');
-    //   // }
-    //   )
+ 

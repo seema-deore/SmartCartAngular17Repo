@@ -1,0 +1,15 @@
+.card {
+  border-radius: 1rem;
+  transition: transform 0.2s ease-in-out;
+  
+  margin:.5rem
+}
+.card:hover {
+  transform: scale(1.02);
+}
+h3{
+  color:goldenrod
+}
+.container{
+  margin-top: 80px;
+}

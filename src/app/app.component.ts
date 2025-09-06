@@ -3,6 +3,7 @@ import { Router, RouterOutlet } from '@angular/router';
 import { FooterComponent } from "./shared/footer/footer.component";
 import { HeaderComponent } from './shared/header/header.component';
 import { BannerComponent } from './customer/banner/banner.component';
+// import { OverviewComponent}from './admin/overview/overview.component';
 import { AuthService } from './services/auth.service';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { CommonModule } from '@angular/common';
@@ -16,7 +17,7 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent implements OnInit{
   title = 'SmartCart';
-
+isAdminRoute = false;
 features: any = [
 { heading : "✔ Free API Integration -",
   data : "To implement and maintain  E-commerce flow"
@@ -54,11 +55,16 @@ features: any = [
 
   visibleFeatures: any = [];
   currentIndex = 0;
-  showIntro = true;
+  showIntro : boolean= false;
 
   constructor( private authService: AuthService, private router: Router ){
-    this.showFeaturesOneByOne();
+        this.showFeaturesOneByOne();
+       
+    this.router.events.subscribe(() => {
+      this.isAdminRoute = this.router.url.startsWith('/admin');
+    });
   }
+  
 showFeaturesOneByOne() {
     const interval = setInterval(() => {
       if (this.currentIndex < this.features.length) {
@@ -72,7 +78,7 @@ showFeaturesOneByOne() {
 
   startDemo() {
     this.showIntro = false;
-    this.router.navigate(['']); // 👈 change to your landing page route
+    this.router.navigate(['']); // 
     this.authService.logout();
   }
 

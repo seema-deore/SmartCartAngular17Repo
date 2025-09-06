@@ -16,7 +16,16 @@
 <div class="row">
     <div class="col-lg-1"></div>
     <div class="col-lg-10">
-        <router-outlet></router-outlet>
+        @defer (on viewport) {
+       <router-outlet></router-outlet>
+        } @placeholder {
+        <p class="display-6 text-center mt-5">Loading ...</p>
+        } @loading {
+        <p class="display-6 text-center mt-5">Fetching latest deals...</p>
+        } @error {
+        <p>Something went wrong while loading products.</p>
+        }
+        
     </div>
     <div class="col-lg-1"></div>
 </div>

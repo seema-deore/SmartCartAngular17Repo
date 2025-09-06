@@ -58,6 +58,8 @@ addUpdatedToCart(item:any, newQuantity: number){
 }
 console.log(data);
 // api not available
+
+
 // this.productService.updateProductToCart(data).subscribe({
 //   next:(res:any)=>{
      

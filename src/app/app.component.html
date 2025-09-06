@@ -1,8 +1,9 @@
+
 <app-header></app-header>
+<!-- <app-overview><app-overview> -->
 @if(showIntro){
  <div class="row">
     <div class="col-lg-2"></div>
-
 
    <div class="col-lg-9 feature-container mt-4">
    <h2 class="mt-5 text-primary"> Angular 17 : Smart-Cart Highlights </h2>
@@ -24,9 +25,8 @@
 <div class="col-lg-1"></div>
 </div>
 }
-
 @if(!showIntro){
-<div class="main-content">
+<div [ngClass]="isAdminRoute ? 'admin-main-content' : 'main-content'">
     <router-outlet></router-outlet>
 </div>
 }

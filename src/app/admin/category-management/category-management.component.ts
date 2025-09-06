@@ -3,12 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductService } from '../../services/product.service';
 
-// interface Category {
-//   CategoryId: number;
-//   CategoryName: string;
-//   ParentCategoryId: number;
-//   UserId: number;
-// }
 @Component({
   selector: 'app-category-management',
   standalone: true,
@@ -17,11 +11,6 @@ import { ProductService } from '../../services/product.service';
   styleUrl: './category-management.component.css'
 })
 export class CategoryManagementComponent implements OnInit {
-// categories: Category[] = [
-//     { CategoryId: 1, CategoryName: 'Electronics', ParentCategoryId: 0, UserId: 1 },
-//     { CategoryId: 2, CategoryName: 'Mobiles', ParentCategoryId: 1, UserId: 1 },
-//     { CategoryId: 3, CategoryName: 'Fashion', ParentCategoryId: 0, UserId: 2 }
-//   ];
 
   categoryForm!: FormGroup;
   isEditing: boolean = false;

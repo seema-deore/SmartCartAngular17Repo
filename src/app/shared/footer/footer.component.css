@@ -6,12 +6,7 @@
   transform: scale(1.1);
 }
 
-/* .footer-social i {
-  transition: transform 0.2s;
-}
-.footer-social i:hover {
-  transform: scale(1.2);
-} */
+
 .footer i {
   transition: transform 0.2s;
 }

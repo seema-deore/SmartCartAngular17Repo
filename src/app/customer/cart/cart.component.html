@@ -30,7 +30,7 @@
         </td>
         <td>{{ item.productName }}</td>
         <td>{{ item.categoryName }}</td>
-        <td class="text-end">{{ item.productPrice  | number:'1.0-0' }}</td>
+        <td class="text-end">{{ item.productPrice }}</td>
         <td class="text-end">{{ item.discount}}</td>
         <td class="text-end">{{ item.discountedPrice}}</td>
         <td>
@@ -50,7 +50,7 @@
     <tfoot>
       <tr>
         <td colspan="7" class="text-end"><strong>Total</strong></td>
-        <td class="text-success fw-bold text-end"><strong>₹ {{ getCartSubtotal() }}</strong></td>
+        <td class="text-success fw-bold text-end"><strong>₹ {{ getCartSubtotal() | number:'1.0-0' }}</strong></td>
         <td><button class="btn btn-success"[disabled]='cartProductList.length==0'><a [routerLink]="['/customer/checkout']" routerLinkActive="router-link-active" >
           Place Order</a></button></td>
       </tr>

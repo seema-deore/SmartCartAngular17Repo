@@ -1,7 +1,8 @@
+
 .card {
   border-radius: 1rem;
   transition: transform 0.2s ease-in-out;
-  
+ 
   margin:.5rem
 }
 .card:hover {
@@ -10,6 +11,54 @@
 h3{
   color:goldenrod
 }
-.container{
-  margin-top: 80px;
+.container-fluid{
+  height:700px;
+  min-height:700px;  
+}
+
+#wrapper {
+  display: flex;
+  width: 100%;
+}
+
+#sidebar-wrapper {
+  min-width: 250px;
+  max-width: 250px;
+  min-height: 600px;
+  background: #52565bff;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  font-size: 1.2rem; 
+  color: #fff;
+  border-right: 1px solid #52565bff;
+}
+
+#sidebar-wrapper .list-group-item {
+  background: #52565bff;
+  color: #f4d90aff;
+  border:none;
+  cursor: pointer;
+  border-bottom: 1px solid darkolivegreen;
+  padding:.5rem
+}
+
+#sidebar-wrapper .list-group-item:hover {
+  background: #495057;
+}
+
+#sidebar-wrapper.toggled {
+  margin-left: -250px;
+}
+
+#page-content-wrapper {
+  width: 100%;
+}
+@media (min-width: 992px) {
+    .navbar-expand-lg {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
 }

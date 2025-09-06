@@ -1,55 +1,49 @@
-<div class="container">
-  <h3 class="my-4 text-center">Dashboard</h3>
-  <div class="row text-center mb-4">
-    <div class="col-md-3">
-      <div class="card shadow-sm p-3 ">
-        <h5>Total Orders</h5>
-        <h3>1,250</h3>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card shadow-sm p-3">
-        <h5>Revenue</h5>
-        <h3>₹4.5L</h3>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card shadow-sm p-3">
-        <h5>New Users</h5>
-        <h3>320</h3>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card shadow-sm p-3">
-        <h5>Pending Orders</h5>
-        <h3>48</h3>
-      </div>
-    </div>
+<div class="d-flex" id="wrapper">
+  <!-- Sidebar -->
+  <div id="sidebar-wrapper" [class.toggled]="isSidebarCollapsed">
+      <div class="sidebar-heading text-center py-2 bgcolor-primary">
+       
+    <a class="navbar-brand text-white fs-2 bgcolor-primary" routerLink="/home">
+      <span>Smar<img src="/assets/images/cart3.png"class="set-logo"> </span></a>
+  
+  </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" routerLink="overview">📊 Dashboard</li>
+      <li class="list-group-item" routerLink="orders">🛒 Orders</li>
+      <li class="list-group-item" routerLink="products">📦 Products</li>
+      <li class="list-group-item" routerLink="categories">📦 Categories</li>
+      <li class="list-group-item" routerLink="users">👥 Users</li> 
+      <li class="list-group-item" routerLink="reports">📑 Reports</li>
+      <li class="list-group-item" routerLink="settings">⚙️ Settings</li>
+    </ul>
   </div>
 
-  <div class="row">
-    <!-- Line Chart: Monthly Revenue -->
-    <div class="col-md-8 mb-4">
-      <div class="card p-3 shadow-sm">
-        <h5 class="mb-3">Monthly Revenue</h5>
-        <canvas baseChart
-                [data]="revenueChartData"
-                [options]="chartOptions"
-                [type]="'line'">
-        </canvas>
-      </div>
+  <!-- Page Content -->
+  <div id="page-content-wrapper" class="flex-grow-1">
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light border-bottom bgcolor-primary">
+      <button class="btn btn-sm" (click)="toggleSidebar()">
+        <i class="bi fs-3" [ngClass]="isSidebarCollapsed ? 'bi-list' : 'bi-x'"></i>
+      </button>
+      <span class="ms-3 fw-bold">Admin Dashboard</span>
+      <div class="dropdown mx-2">
+      <a class="nav-link dropdown-toggle text-white " role="button" data-bs-toggle="dropdown">
+        <i class="bi bi-person-circle fs-4"></i>
+      </a>        
+       <ul class="dropdown-menu dropdown-menu-end">
+        <li><a class="dropdown-item" (click)="logout()" routerLink = "/customer/home">Log Out</a></li>      
+      </ul>
     </div>
+    </nav>
 
-    <!-- Pie Chart: Category Distribution -->
-    <div class="col-md-4 mb-4">
-      <div class="card p-3 shadow-sm">
-        <h5 class="mb-3">Product Categories</h5>
-        <canvas baseChart
-                [data]="categoryChartData"
-                [type]="'pie'">
-        </canvas>
-      </div>
+    <div class="container-fluid mt-0">
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
+
+
+
+
+
 

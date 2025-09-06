@@ -19,10 +19,11 @@
 }
 
 .shop-now-btn {
+  margin-top:50px;
   animation: fadeIn 2s ease-in-out forwards;
   opacity: 0; /* initially hidden */
   animation-delay: 1s;
-   animation: pulse 2s infinite;
+  animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
@@ -53,8 +54,8 @@
   .offer-col {
     flex: 1 1 50%; /* Two columns on medium+ screens */
   }
+  
 }
-
 .offer-overlay {
   background-color: rgba(106, 101, 6, 0.841); /* semi-transparent black */
   color: #fff;
@@ -75,7 +76,7 @@
 .services-overlap {
   
   position: absolute;
-  bottom: 20px; /* moves the cards below header image */
+  bottom: 10px; /* moves the cards below header image */
   /* left: 3%; */
     /* transform: translateX(-50%);   */
 }
@@ -148,21 +149,21 @@
   scroll-snap-align: start;
 }
 .header-bg {
-  background-image: url('/assets/images/fashion-women-1920.jpg');
+  background-image: url('/assets/images/fashion-women2.jpg');
   background-size:cover;        /* cover keeps responsive fill */
   background-position:center;   /* center keeps focal point */
   background-repeat: no-repeat;
-  background-color: rgb(48, 48, 48);
-  height: 650px; 
+  /* background-color: rgb(48, 48, 48); */
+  height:650px; 
   max-height: 650px; 
-  position: relative;
-  
+  position: relative;  
   align-items: center;
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.6); /* dark overlay */
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5); /* dark overlay */
 }
 
 @media (max-width: 768px) {
   .header-bg {
+      background-image: url('/assets/images/fashion-women-1920.jpg');
     height: 400px;  /* reduce height for mobile */
   }
 

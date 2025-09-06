@@ -52,7 +52,7 @@
 </div>
 
 <div class="container mt-2">
-  <div class="d-flex justify-content-between align-items-center mb-2">
+  <div class="d-flex justify-content-between align-items-center mb-2 mx-2">
     
     <button class="btn bgcolor-primary text-white px-5" (click)="openAddProduct()">+ Add Product</button>
   </div>
@@ -88,27 +88,27 @@
       </div>
       <div class="modal-body">
         <form [formGroup]="productForm">
-          <div class="mb-3">
+          <div >
             <label>SKU</label>
             <input type="text" formControlName="productSku" class="form-control">
           </div>
-          <div class="mb-3">
+          <div>
             <label>Name</label>
             <input type="text" formControlName="productName" class="form-control">
           </div>
-          <div class="mb-3">
+          <div>
             <label>Price</label>
             <input type="number" formControlName="productPrice" class="form-control">
           </div>
-          <div class="mb-3">
+          <div>
             <label>Short Name</label>
             <input type="text" formControlName="productShortName" class="form-control">
           </div>
-          <div class="mb-3">
+          <div>
             <label>Description</label>
             <textarea formControlName="productDescription" class="form-control"></textarea>
           </div>
-          <div class="mb-3">
+          <div>
             <label>Delivery Time Span</label>
             <input type="text" formControlName="deliveryTimeSpan" class="form-control">
           </div>
@@ -116,7 +116,7 @@
             <label>Category ID</label>
             <input type="number" formControlName="categoryId" class="form-control">
           </div> -->
-          <div class="mb-3">
+          <div>
             <label>Category Name</label>
           <select formControlName="categoryId" class="form-select"> 
              
@@ -126,15 +126,15 @@
             </select>
             
           </div>
-          <div class="mb-3">
+          <div>
             <label>Image URL</label>
             <input type="text" formControlName="productImageUrl" class="form-control">
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-secondary" (click)="closeModal()">Cancel</button>
-        <button class="btn btn-success" (click)="saveProduct()">
+        <button class="btn btn-secondary btn-sm" (click)="closeModal()">Cancel</button>
+        <button class="btn btn-success btn-sm" (click)="saveProduct()">
           {{ isEditMode ? 'Update' : 'Add' }}
         </button>
       </div>
