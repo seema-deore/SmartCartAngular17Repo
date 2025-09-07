@@ -1,4 +1,9 @@
-
+.set-avatar{
+  height:45px;
+  width:45px;
+  border-radius:50%;
+  border:1px solid white;
+}
 .card {
   border-radius: 1rem;
   transition: transform 0.2s ease-in-out;
@@ -12,7 +17,7 @@ h3{
   color:goldenrod
 }
 .container-fluid{
-  height:700px;
+  /* height:700px; */
   min-height:700px;  
 }
 
@@ -32,13 +37,15 @@ h3{
 
 #sidebar-wrapper .sidebar-heading {
   font-size: 1.2rem; 
+  
+  margin: 2rem 0;
   color: #fff;
   border-right: 1px solid #52565bff;
 }
 
 #sidebar-wrapper .list-group-item {
   background: #52565bff;
-  color: #f4d90aff;
+  color: #fff;
   border:none;
   cursor: pointer;
   border-bottom: 1px solid darkolivegreen;
@@ -61,4 +68,9 @@ h3{
         flex-wrap: nowrap;
         justify-content: space-between;
     }
+}
+.breadcrumb {
+  background: transparent;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
 }

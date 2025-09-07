@@ -1,54 +1,95 @@
-<div class="container">
-  <h3 class="my-4 text-center">Dashboard</h3>
-  <div class="row text-center mb-4">
-    <div class="col-md-3">
-      <div class="card shadow-sm p-3 ">
-        <h5>Total Orders</h5>
-        <h3>1,250</h3>
+<div class="container-fluid mt-3">
+  
+  <!-- KPI Cards -->
+  <div class="row text-center">
+    <div class="col-md-3 col-6 mb-3">
+      <div class="card shadow-sm p-3">
+        <h6>Total Orders</h6>
+        <h3>{{ dashboardData.totalOrders }}</h3>
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 col-6 mb-3">
       <div class="card shadow-sm p-3">
-        <h5>Revenue</h5>
-        <h3>₹4.5L</h3>
+        <h6>Revenue</h6>
+        <h3>₹{{ dashboardData.revenue | number }}</h3>
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 col-6 mb-3">
       <div class="card shadow-sm p-3">
-        <h5>New Users</h5>
-        <h3>320</h3>
+        <h6>New Users</h6>
+        <h3>{{ dashboardData.newUsers }}</h3>
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 col-6 mb-3">
       <div class="card shadow-sm p-3">
-        <h5>Pending Orders</h5>
-        <h3>48</h3>
+        <h6>Pending Orders</h6>
+        <h3>{{ dashboardData.pendingOrders }}</h3>
       </div>
     </div>
   </div>
 
-  <div class="row">
-    <!-- Line Chart: Monthly Revenue -->
-    <!-- <div class="col-md-8 mb-4">
+  <!-- Charts Row 1 -->
+  <div class="row my-4">
+    <div class="col-lg-8 mb-3">
       <div class="card p-3 shadow-sm">
-        <h5 class="mb-3">Monthly Revenue</h5>
-        <canvas baseChart
-                [data]="revenueChartData"
-                [options]="chartOptions"
-                [type]="'line'">
-        </canvas>
+        <h5>📈 Monthly Sales</h5>
+        <canvas baseChart [data]="monthlySalesChart.data" [type]="'line'"></canvas>
       </div>
-    </div> -->
-
-    <!-- Pie Chart: Category Distribution -->
-    <!-- <div class="col-md-4 mb-4">
+    </div>
+    <div class="col-lg-4 mb-3">
       <div class="card p-3 shadow-sm">
-        <h5 class="mb-3">Product Categories</h5>
-        <canvas baseChart
-                [data]="categoryChartData"
-                [type]="'pie'">
-        </canvas>
+        <h5>📊 Category Distribution</h5>
+        <canvas baseChart [data]="categoryChart.data" [type]="'pie'"></canvas>
       </div>
-    </div> -->
+    </div>
   </div>
+
+  <!-- Charts Row 2 -->
+  <div class="row my-4">
+    <div class="col-lg-6 mb-3">
+      <div class="card p-3 shadow-sm">
+        <h5>🏆 Top Products</h5>
+        <canvas baseChart [data]="topProductsChart.data"
+                [options]="topProductsChart.options"
+                [type]="'bar'"></canvas>
+      </div>
+    </div>
+    <div class="col-lg-6 mb-3">
+      <div class="card p-3 shadow-sm">
+        <h5>📉 Revenue vs Orders</h5>
+        <canvas baseChart [data]="dualAxisChart.data"
+                [options]="dualAxisChart.options"
+                [type]="'line'"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Users -->
+  <div class="row my-4">
+    <div class="col-12">
+      <div class="card p-3 shadow-sm">
+        <h5>👥 Recent Users</h5>
+        <table class="table table-striped mt-3">
+          <thead>
+            <tr>
+              <th>User ID</th>
+              <th>Name</th>
+              <th>Joined Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of dashboardData.recentUsers">
+              <td>{{ user.userId }}</td>
+              <td>{{ user.name }}</td>
+              <td>{{ user.joinedDate | date }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
 </div>
+
+
+

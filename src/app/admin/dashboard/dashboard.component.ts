@@ -18,7 +18,22 @@ export class DashboardComponent implements OnInit{
 dashboardData:any;
 isSidebarCollapsed = false;
 
-constructor(private dbService: DashboardService,public auth: AuthService){}
+
+currentRoute: string = ''; 
+  
+
+constructor(private dbService: DashboardService,public auth: AuthService, private router: Router){
+  this.router.events.subscribe(() => {
+      const url = this.router.url;
+
+      // Example: /admin/dashboard => Dashboard
+      if (url.includes('overview')) this.currentRoute = 'Dashboard';
+      else if (url.includes('products')) this.currentRoute = 'Products';
+      else if (url.includes('categories')) this.currentRoute = 'Categories';
+      else if (url.includes('orders')) this.currentRoute = 'Orders';
+      else this.currentRoute = '';
+    });
+}
 
 ngOnInit(){
   this.dbService.getDashboardData().subscribe((res:any) => {

@@ -1,11 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-light border-bottom bgcolor-primary text-white py-0">
+       <a class="navbar-brand text-white fs-2 mx-2" routerLink="/home">
+      <span>Smar<img src="/assets/images/logo.png"class="set-logo"> </span></a>  
+
+      <span class="fs-4">Admin</span>
+      <div class="dropdown mx-2">
+      <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
+        <!-- <i class="bi bi-person-circle fs-4"></i> -->
+         <img src="/assets/images/icon-avatar.webp"class="set-avatar">
+      </a>        
+       <ul class="dropdown-menu dropdown-menu-end">
+        <li><a class="dropdown-item" (click)="logout()" routerLink = "/customer/home">Log Out</a></li>      
+      </ul>
+    </div>
+    </nav>
+
 <div class="d-flex" id="wrapper">
   <!-- Sidebar -->
   <div id="sidebar-wrapper" [class.toggled]="isSidebarCollapsed">
-      <div class="sidebar-heading text-center py-2 bgcolor-primary">
-       
-    <a class="navbar-brand text-white fs-2 bgcolor-primary" routerLink="/home">
-      <span>Smar<img src="/assets/images/cart3.png"class="set-logo"> </span></a>
-  
+      <div class="sidebar-heading color-primary">       
+   Admin-Name 
   </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item" routerLink="overview">📊 Dashboard</li>
@@ -19,22 +32,19 @@
   </div>
 
   <!-- Page Content -->
-  <div id="page-content-wrapper" class="flex-grow-1">
-    <!-- Top Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light border-bottom bgcolor-primary">
-      <button class="btn btn-sm" (click)="toggleSidebar()">
-        <i class="bi fs-3" [ngClass]="isSidebarCollapsed ? 'bi-list' : 'bi-x'"></i>
-      </button>
-      <span class="ms-3 fw-bold">Admin Dashboard</span>
-      <div class="dropdown mx-2">
-      <a class="nav-link dropdown-toggle text-white " role="button" data-bs-toggle="dropdown">
-        <i class="bi bi-person-circle fs-4"></i>
-      </a>        
-       <ul class="dropdown-menu dropdown-menu-end">
-        <li><a class="dropdown-item" (click)="logout()" routerLink = "/customer/home">Log Out</a></li>      
-      </ul>
-    </div>
-    </nav>
+  <div id="page-content-wrapper" class="flex-grow-1">    
+     <button class="btn btn-sm" (click)="toggleSidebar()">
+        <i class="bi fs-3" [ngClass]="isSidebarCollapsed ? 'bi-list' : 'bi-x'"></i></button>
+        <span class="mx-5 fst-normal fs-6"> Admin > {{ currentRoute }}</span>
+      
+      <!-- <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">Admin</li>
+      <li class="breadcrumb-item active" aria-current="page">
+        {{ currentRoute }}
+      </li>
+    </ol>
+  </nav> -->
 
     <div class="container-fluid mt-0">
       <router-outlet></router-outlet>

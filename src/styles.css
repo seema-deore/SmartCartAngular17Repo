@@ -53,3 +53,7 @@ color: goldenrod !important;
     height:50px !important;
     width:45px !important; 
 }
+.dropdown-menu{
+    font-size:.9rem!important;
+    padding:0!important;
+}

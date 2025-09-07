@@ -1,15 +1,13 @@
 .card {
-  border-radius: 1rem;
-  transition: transform 0.2s ease-in-out;
-  
-  margin:.5rem
+  border-radius: 12px;
+}
+
+h5 {
+  font-weight: 600;
+  margin-bottom: 1rem;
 }
 .card:hover {
   transform: scale(1.02);
 }
-h3{
-  color:goldenrod
-}
-.container{
-  margin-top: 80px;
-}
+  
+
