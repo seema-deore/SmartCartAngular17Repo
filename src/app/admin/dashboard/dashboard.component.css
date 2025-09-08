@@ -17,13 +17,13 @@ h3{
   color:goldenrod
 }
 .container-fluid{
-  /* height:700px; */
   min-height:700px;  
 }
 
 #wrapper {
   display: flex;
   width: 100%;
+   margin-top:60px
 }
 
 #sidebar-wrapper {
@@ -49,7 +49,8 @@ h3{
   border:none;
   cursor: pointer;
   border-bottom: 1px solid darkolivegreen;
-  padding:.5rem
+  padding:.5rem;
+  padding-right:1rem;
 }
 
 #sidebar-wrapper .list-group-item:hover {
@@ -61,7 +62,7 @@ h3{
 }
 
 #page-content-wrapper {
-  width: 100%;
+  width: 100%; 
 }
 @media (min-width: 992px) {
     .navbar-expand-lg {
@@ -73,4 +74,13 @@ h3{
   background: transparent;
   font-size: 0.95rem;
   margin-bottom: 1rem;
+}
+.content-blur {
+  filter: blur(10px);
+  pointer-events: none;   /* prevents clicking on blurred content */
+  transition: filter 0.3s ease-in-out;
+}
+.shifted {
+  margin-left: 60px; /* collapsed width */
+  transition: margin-left 0.3s ease-in-out;
 }

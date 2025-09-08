@@ -5,7 +5,6 @@ import { DashboardService} from '../../services/dashboard.service';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from'@angular/router';
 import { Router, RouterLink } from '@angular/router';
-// import dashboardDataJson from '../assets/dashboard/dashboard-data.json';
 
 @Component({
   selector: 'app-overview',
@@ -23,14 +22,14 @@ monthlySalesLabels:any;
 monthlySalesValues:any; 
 monthlySalesChart!: ChartConfiguration;
 
-categoryLabels :any;
+  categoryLabels :any;
   categoryValues :any;
   categoryChart!: ChartConfiguration;
 
   topProductLabels: any ;
   topProductRevenues : any;
   topProductsChart!: ChartConfiguration;
-   dualAxisChart!: ChartConfiguration;
+  dualAxisChart!: ChartConfiguration;
 
 
 constructor(private dbService: DashboardService){}
@@ -55,8 +54,8 @@ this.monthlySalesValues = this.dashboardData?.monthlySales.map((m: any) => m.sal
           data: this.monthlySalesValues,
           label: 'Monthly Sales',
           fill: true,
-          borderColor: '#42A5F5',
-          backgroundColor: 'rgba(66,165,245,0.3)',
+          borderColor: '#214c6fff',
+          backgroundColor: 'rgba(185, 216, 242, 0.3)',
           tension: 0.3
         }
       ]
@@ -74,7 +73,7 @@ this.monthlySalesValues = this.dashboardData?.monthlySales.map((m: any) => m.sal
         {
           data: this.categoryValues,
           backgroundColor: [
-            '#42A5F5', '#66BB6A', '#FFA726', '#AB47BC', '#FF7043', '#26A69A'
+            '#c2d9ebff', '#c5f9c6ff', '#f7d9acff', '#f2c9f9ff', '#ebb19fff', '#b3f2ecff'
           ]
         }
       ]
@@ -92,7 +91,7 @@ this.monthlySalesValues = this.dashboardData?.monthlySales.map((m: any) => m.sal
         {
           data: this.topProductRevenues,
           label: 'Revenue',
-          backgroundColor: '#42A5F5'
+          backgroundColor: '#677f93ff'
         }
       ]
     },

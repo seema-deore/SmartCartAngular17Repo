@@ -20,10 +20,10 @@
   "categoryData": [
     { "name": "Electronics", "value": 320 },
     { "name": "Fashion", "value": 280 },
-    { "name": "Home & Kitchen", "value": 200 },
+    { "name": "Gazets", "value": 200 },
     { "name": "Beauty & Health", "value": 150 },
-    { "name": "Sports", "value": 120 },
-    { "name": "Others", "value": 175 }
+    { "name": "Sports", "value": 320 },
+    { "name": "Others", "value": 275 }
   ],
   "topProducts": [
     {
@@ -35,22 +35,41 @@
     },
     {
       "productId": 202,
-      "productName": "Sneakers",
-      "category": "Fashion",
-      "sales": 120,
-      "revenue": 36000
+      "productName": "Nike",
+      "category": "Shoes",
+      "sales": 1200,
+      "revenue": 360000
     },
     {
       "productId": 303,
-      "productName": "Mixer Grinder",
-      "category": "Home & Kitchen",
-      "sales": 90,
-      "revenue": 27000
+      "productName": "Rolex",
+      "category": "watch",
+      "sales": 900,
+      "revenue": 270000
+    },
+    {
+      "productId": 308,
+      "productName": "Ribbed Zip",
+      "category": "T-Shirts",
+      "sales": 10000,
+      "revenue": 300000
+    },
+    {
+      "productId": 703,
+      "productName": "Ford99",
+      "category": "Suit",
+      "sales": 100,
+      "revenue": 700000
     }
   ],
   "recentUsers": [
     { "userId": 1, "name": "Seema Deore", "joinedDate": "2025-08-01" },
     { "userId": 2, "name": "Rahul Sharma", "joinedDate": "2025-08-05" },
-    { "userId": 3, "name": "Priya Verma", "joinedDate": "2025-08-07" }
-  ]
+    { "userId": 3, "name": "Priya Verma", "joinedDate": "2025-08-07" },
+    { "userId": 2, "name": "Aditi Patil", "joinedDate": "2025-09-03" },
+    { "userId": 3, "name": "Pavan Patel", "joinedDate": "2025-9-06" }
+  ],
+  "companyFinanceGrowth":"+45.14%",
+  "companyExpensesRatio": "0.58%",
+  "businessRiskCases":"Low"
 }

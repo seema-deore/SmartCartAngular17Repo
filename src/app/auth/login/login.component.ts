@@ -86,7 +86,7 @@ this.authService.login(loginData).subscribe({
         },
         error: (err: any) => {
           console.error('Login failed:', err);
-          alert('failed. Please try again.');
+          this.errorMsg='Login failed. Please try again.';
         },
         complete: () => {
           console.log('Request completed.');

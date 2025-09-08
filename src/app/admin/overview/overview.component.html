@@ -5,25 +5,25 @@
     <div class="col-md-3 col-6 mb-3">
       <div class="card shadow-sm p-3">
         <h6>Total Orders</h6>
-        <h3>{{ dashboardData.totalOrders }}</h3>
+        <h4>{{ dashboardData.totalOrders }}</h4>
       </div>
     </div>
     <div class="col-md-3 col-6 mb-3">
       <div class="card shadow-sm p-3">
         <h6>Revenue</h6>
-        <h3>₹{{ dashboardData.revenue | number }}</h3>
+        <h4>₹{{ dashboardData.revenue | number }}</h4>
       </div>
     </div>
     <div class="col-md-3 col-6 mb-3">
       <div class="card shadow-sm p-3">
         <h6>New Users</h6>
-        <h3>{{ dashboardData.newUsers }}</h3>
+        <h4>{{ dashboardData.newUsers }}</h4>
       </div>
     </div>
     <div class="col-md-3 col-6 mb-3">
       <div class="card shadow-sm p-3">
         <h6>Pending Orders</h6>
-        <h3>{{ dashboardData.pendingOrders }}</h3>
+        <h4>{{ dashboardData.pendingOrders }}</h4>
       </div>
     </div>
   </div>
@@ -32,13 +32,13 @@
   <div class="row my-4">
     <div class="col-lg-8 mb-3">
       <div class="card p-3 shadow-sm">
-        <h5>📈 Monthly Sales</h5>
+        <h5>Monthly Sales</h5>
         <canvas baseChart [data]="monthlySalesChart.data" [type]="'line'"></canvas>
       </div>
     </div>
     <div class="col-lg-4 mb-3">
       <div class="card p-3 shadow-sm">
-        <h5>📊 Category Distribution</h5>
+        <h5>Category Distribution</h5>
         <canvas baseChart [data]="categoryChart.data" [type]="'pie'"></canvas>
       </div>
     </div>
@@ -48,7 +48,7 @@
   <div class="row my-4">
     <div class="col-lg-6 mb-3">
       <div class="card p-3 shadow-sm">
-        <h5>🏆 Top Products</h5>
+        <h5>Top Products</h5>
         <canvas baseChart [data]="topProductsChart.data"
                 [options]="topProductsChart.options"
                 [type]="'bar'"></canvas>
@@ -56,7 +56,7 @@
     </div>
     <div class="col-lg-6 mb-3">
       <div class="card p-3 shadow-sm">
-        <h5>📉 Revenue vs Orders</h5>
+        <h5>Revenue vs Orders</h5>
         <canvas baseChart [data]="dualAxisChart.data"
                 [options]="dualAxisChart.options"
                 [type]="'line'"></canvas>
@@ -66,9 +66,9 @@
 
   <!-- Recent Users -->
   <div class="row my-4">
-    <div class="col-12">
+    <div class="col-lg-6 mb-3">
       <div class="card p-3 shadow-sm">
-        <h5>👥 Recent Users</h5>
+        <h5>Recent Users</h5>
         <table class="table table-striped mt-3">
           <thead>
             <tr>
@@ -87,8 +87,20 @@
         </table>
       </div>
     </div>
-  </div>
+  
+    <div class="col-lg-6 mb-3">
+      <div class="card p-3 shadow-sm">
+            <h5>Analytics Report</h5>
+            <ul style="list-style-type: none; padding-left: 0;">
+              <li> Company Finance Growth : <span class="fw-bold">{{dashboardData.companyFinanceGrowth}}</span> </li>    
+                      
+              <li> Company Expenses Ratio : <span class="fw-bold">{{dashboardData.companyExpensesRatio}}</span></li>
 
+              <li> Business Risk Cases : <span class="fw-bold">{{dashboardData.businessRiskCases}}</span></li>
+            </ul> 
+    </div>
+    </div>
+</div>
 </div>
 
 

@@ -1,11 +1,11 @@
-<nav class="navbar navbar-expand-lg navbar-light border-bottom bgcolor-primary text-white py-0">
+<nav class="navbar navbar-expand-lg border-bottom bgcolor-primary text-white py-0 fixed-top shadow-sm">
        <a class="navbar-brand text-white fs-2 mx-2" routerLink="/home">
       <span>Smar<img src="/assets/images/logo.png"class="set-logo"> </span></a>  
 
       <span class="fs-4">Admin</span>
       <div class="dropdown mx-2">
       <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
-        <!-- <i class="bi bi-person-circle fs-4"></i> -->
+        <i class="bi bi-envelope-fill fs-5 mx-2"></i> 
          <img src="/assets/images/icon-avatar.webp"class="set-avatar">
       </a>        
        <ul class="dropdown-menu dropdown-menu-end">
@@ -17,7 +17,7 @@
 <div class="d-flex" id="wrapper">
   <!-- Sidebar -->
   <div id="sidebar-wrapper" [class.toggled]="isSidebarCollapsed">
-      <div class="sidebar-heading color-primary">       
+      <div class="sidebar-heading color-primary px-2">       
    Admin-Name 
   </div>
     <ul class="list-group list-group-flush">
@@ -36,19 +36,11 @@
      <button class="btn btn-sm" (click)="toggleSidebar()">
         <i class="bi fs-3" [ngClass]="isSidebarCollapsed ? 'bi-list' : 'bi-x'"></i></button>
         <span class="mx-5 fst-normal fs-6"> Admin > {{ currentRoute }}</span>
-      
-      <!-- <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">Admin</li>
-      <li class="breadcrumb-item active" aria-current="page">
-        {{ currentRoute }}
-      </li>
-    </ol>
-  </nav> -->
 
-    <div class="container-fluid mt-0">
-      <router-outlet></router-outlet>
-    </div>
+    <!-- [ngClass]="{ 'content-blur': !isSidebarCollapsed }" -->
+    <div class="container-fluid mt-3">    
+        <router-outlet></router-outlet>
+        </div>
   </div>
 </div>
 
