@@ -19,7 +19,7 @@ export class AppComponent implements OnInit{
   title = 'SmartCart';
 isAdminRoute = false;
 features: any = [
-{ heading : "✔ Free API Integration -",
+{ heading : "✔ Free Live API Integration -",
   data : "To implement and maintain  E-commerce flow"
 },
 { heading:"✔ Token-based Authentication -",
@@ -43,19 +43,22 @@ features: any = [
 { heading:"✔ Signals (Reactivity Model) - ",
   data:"Simplified state management in cart and wishlist."
 },
-{ heading:"✔ Enhanced Router - ",
-  data:"Used loadComponent for lazy standalone component routing."
+{ heading:"✔ Route Lazy Loading - ",
+  data:"Faster initial load with on-demand module/component loading"
 },
-{ heading:"✔ Strong Typed Forms -", 
-  data:" Leveraged Angular 17 typed reactive forms for product add/update."
+{ heading:"✔ Admin Dashboard UI -", 
+  data: "With charts, stats, and recent activity tracking."
 },
-{ heading:"✔ Modern CSS Integration - ",
-  data: "Scoped styles and utility classes with Bootstrap integration for Responsive Web design."
+{ heading:"✔ Interactive Data Visualization -", 
+  data:"Implemented charts using Chart.js v4 and ng2-charts v5 for sales and analytics."
+},
+{ heading:"✔ Bootstrap 5 Integration - ",
+  data: "Responsive layouts with utility classes and scoped styling."
 }]
 
   visibleFeatures: any = [];
   currentIndex = 0;
-  showIntro : boolean= false;
+  showIntro : boolean= true;
 
   constructor( private authService: AuthService, private router: Router ){
         this.showFeaturesOneByOne();

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg border-bottom bgcolor-primary text-white py-0 fixed-top shadow-sm">
-       <a class="navbar-brand text-white fs-2 mx-2" routerLink="/home">
+       <a class="navbar-brand text-white fs-2 px-3" routerLink="/home">
       <span>Smar<img src="/assets/images/logo.png"class="set-logo"> </span></a>  
 
       <span class="fs-4">Admin</span>
@@ -21,13 +21,13 @@
    Admin-Name 
   </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item" routerLink="overview">📊 Dashboard</li>
-      <li class="list-group-item" routerLink="orders">🛒 Orders</li>
-      <li class="list-group-item" routerLink="products">📦 Products</li>
-      <li class="list-group-item" routerLink="categories">📦 Categories</li>
-      <li class="list-group-item" routerLink="users">👥 Users</li> 
-      <li class="list-group-item" routerLink="reports">📑 Reports</li>
-      <li class="list-group-item" routerLink="settings">⚙️ Settings</li>
+      <li class="list-group-item" routerLink="overview">Dashboard</li>
+      <li class="list-group-item" routerLink="orders">Orders</li>
+      <li class="list-group-item" routerLink="products">Products</li>
+      <li class="list-group-item" routerLink="categories">Categories</li>
+      <li class="list-group-item" routerLink="users">Users</li> 
+      <li class="list-group-item" routerLink="reports">Reports</li>
+      <li class="list-group-item" routerLink="settings">Settings</li>
     </ul>
   </div>
 
@@ -38,7 +38,7 @@
         <span class="mx-5 fst-normal fs-6"> Admin > {{ currentRoute }}</span>
 
     <!-- [ngClass]="{ 'content-blur': !isSidebarCollapsed }" -->
-    <div class="container-fluid mt-3">    
+    <div class="container-fluid content-scroll">    
         <router-outlet></router-outlet>
         </div>
   </div>
