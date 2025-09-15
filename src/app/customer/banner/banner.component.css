@@ -163,7 +163,7 @@
 
 @media (max-width: 768px) {
   .header-bg {
-      background-image: url('/assets/images/fashion-women-1920.jpg');
+    background-image: url('/assets/images/fashion-women-1920.jpg');
     height: 400px;  /* reduce height for mobile */
   }
 

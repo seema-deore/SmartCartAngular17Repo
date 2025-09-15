@@ -1,0 +1,16 @@
+Smart Cart is my recent showcase E-Commerce web app  built with Angular 17.
+The landing page looks interactive and dynamic with CSS animations and key frames.
+App uses lazy-loaded standalone components with defer for performance optimization.
+and even banner images are loaded lazily for fast performance.
+I used Bootstrap 5 and media queries to make it fully responsive for all devices,  here I showed mobile app view.
+With 25+ APIs and services , the app delivers a smooth and seamless shopping experience.
+Reactive forms handle user registration with validations. After login, a unique token is stored and used in AuthGuard to protect routes.
+Product details use parameterized routes, and the cart auto-updates using Behavior Subject state management.
+Custom Services with API , manages Wish List items.
+‘../GetCartProductsByCustomerId?id=’ this API list cart products and managed to place order.
+User can view filtered products category wise and search by content using custom Pipe
+Here RoleGuard secures admin pages and the header is dynamically change based on role
+The Admin dashboard uses ng2-charts and Chart.js for analytics.
+Admin can also add, update, or delete products and categories through APIs.
+I’m excited to keep improving and take on new challenges ahead.
+Thank you for watching!!

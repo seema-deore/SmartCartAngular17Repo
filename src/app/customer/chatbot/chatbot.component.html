@@ -1,0 +1,33 @@
+<div class="chatbot-wrapper" [class.open]="isOpen">
+  
+  <button class="chat-toggle" (click)="toggleChat()">
+    💬
+  </button>
+
+ 
+  <div class="chat-window" *ngIf="isOpen">
+    <div class="chat-header">
+      SmartCart Assistant
+      <button (click)="toggleChat()">✖</button>
+    </div>
+
+<div class="chat-body">
+  <div *ngFor="let msg of messages" [ngClass]="msg.type">
+    {{ msg.text }}
+  </div>
+  <div class="quick-replies">
+      <button (click)="handleQuickReply('my cart')">🛒 My Cart</button>
+      <button (click)="handleQuickReply('my orders')">📦 My Orders</button>
+      <button (click)="handleQuickReply('categories')">📂 Categories</button>
+    </div>
+  <div *ngIf="loading" class="bot">Typing...</div>
+</div>
+
+    <div class="chat-footer">
+      <input [(ngModel)]="userMessage" (keyup.enter)="sendMessage()" placeholder="Ask me something..." />
+      <button (click)="sendMessage()">➤</button>
+    </div>
+  </div>
+</div>
+
+

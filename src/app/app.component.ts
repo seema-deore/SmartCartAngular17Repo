@@ -3,7 +3,8 @@ import { Router, RouterOutlet } from '@angular/router';
 import { FooterComponent } from "./shared/footer/footer.component";
 import { HeaderComponent } from './shared/header/header.component';
 import { BannerComponent } from './customer/banner/banner.component';
-// import { OverviewComponent}from './admin/overview/overview.component';
+import { ChatbotComponent} from './customer/chatbot/chatbot.component';
+// import {StoreMapComponent} from './shared/store-map/store-map.component';
 import { AuthService } from './services/auth.service';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { CommonModule } from '@angular/common';
@@ -11,7 +12,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent,FooterComponent,CommonModule],
+  imports: [RouterOutlet, HeaderComponent,FooterComponent,ChatbotComponent,CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'  
 })
@@ -64,7 +65,7 @@ features: any = [
         this.showFeaturesOneByOne();
        
     this.router.events.subscribe(() => {
-      this.isAdminRoute = this.router.url.startsWith('/admin');
+      this.isAdminRoute = this.router.url.startsWith('/admin'); // adjest  margin if adminroute
     });
   }
   

@@ -1,6 +1,6 @@
 
 <app-header></app-header>
-<!-- <app-overview><app-overview> -->
+
 @if(showIntro){
  <div class="row">
     <div class="col-lg-2"></div>
@@ -26,6 +26,9 @@
 @if(!showIntro){
 <div [ngClass]="isAdminRoute ? 'admin-main-content' : 'main-content'">
     <router-outlet></router-outlet>
+    @if(!this.isAdminRoute){
+    <app-chatbot></app-chatbot>
+    }
 </div>
 }
 

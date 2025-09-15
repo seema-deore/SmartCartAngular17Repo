@@ -19,7 +19,8 @@ export const customerRoutes: Routes = [
       { path: 'checkout', 
         canActivate: [customerGuard],
         loadComponent: () => import('./checkout/checkout.component').then(c => c.CheckoutComponent) },
-    
+      { path: 'chatbot', 
+        loadComponent: () => import('./chatbot/chatbot.component').then(c => c.ChatbotComponent) }
     ]
   }
 ];
