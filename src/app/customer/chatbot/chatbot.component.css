@@ -1,67 +1,83 @@
 .chatbot-wrapper {
   position: fixed;
   bottom: 20px;
-  right: 20px;
-  font-family: Arial, sans-serif;
+  right: 20px;  
 }
 
-.chat-toggle {
-  background: #007bff;
+.chat-not-toggle {
+  position :relative;
+  background-color:goldenrod; 
   color: white;
-  border: none;
+  border: 1px solid white;
   border-radius: 50%;
-  width: 55px;
-  height: 55px;
+  width: 65px;
+  height: 65px;
   font-size: 24px;
-  cursor: pointer;
+  cursor: pointer;  
+}
+.chat-toggle {
+  background-color:goldenrod; 
+  color: white;
+  border: 1px solid white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  cursor: pointer;  
+  position: absolute;
+  top: 5px;
+  right: 230px;
 }
 
 .chat-window {
-  width: 320px;
-  height: 420px;
+  width: 300px;
+  max-width:300px;
+  height: 400px;
+  font-weight:400;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow: hidden;  
 }
 
 .chat-header {
-  background: #007bff;
+  background: #3a3d3fff;
   color: white;
-  padding: 10px;
+  padding: 15px;
   font-weight: bold;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+ text-align:end;
 }
 
-.chat-body {
-  flex: 1;
+.chat-body {  
+  font-size:.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   padding: 10px;
-  overflow-y: auto;
+  overflow-y:auto;
 }
 
 .chat-body .bot {
-  background: #f1f1f1;
-  padding: 6px 10px;
-  border-radius: 8px;
-  margin: 5px 0;
   align-self: flex-start;
-  max-width: 75%;
+  background: #f1f1f1;
+  color: #333;
+  padding: 8px 12px;
+  border-radius: 12px;
+  max-width: 70%;
 }
 
+/* User messages (right aligned) */
 .chat-body .user {
-  background: #007bff;
-  color: white;
-  padding: 6px 10px;
-  border-radius: 8px;
-  margin: 5px 0;
   align-self: flex-end;
-  max-width: 75%;
+  background: #58638dff;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 12px;
+  max-width: 70%;
+  text-align: right;
 }
-
 .chat-footer {
   display: flex;
   padding: 8px;
@@ -76,7 +92,7 @@
 }
 
 .chat-footer button {
-  background: #007bff;
+  background: #373a3dff;
   border: none;
   color: white;
   margin-left: 6px;
@@ -92,15 +108,21 @@
 }
 
 .quick-replies button {
-  background: #007bff;
+  background: #5e7690ff;
   color: white;
   border: none;
   border-radius: 6px;
-  padding: 5px 10px;
+  padding: 5px 8px;
   cursor: pointer;
-  font-size: 12px;
+  font-size:.7rem;  
 }
 
 .quick-replies button:hover {
-  background: #0056b3;
+  background: #6282a3ff;
 }
+::placeholder { 
+    color: rgb(115, 113, 113);
+    opacity: 1; 
+    font-weight: lighter;
+    font-size:small;
+  }

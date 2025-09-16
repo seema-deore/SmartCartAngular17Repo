@@ -1,14 +1,14 @@
 <div class="chatbot-wrapper" [class.open]="isOpen">
   
-  <button class="chat-toggle" (click)="toggleChat()">
-    💬
+  <button [ngClass]="{'chat-toggle':isOpen,'chat-not-toggle': !isOpen}" (click)="toggleChat()">
+    <img  src="assets/images/robot-assistant.png" height="50" width="50">
   </button>
 
- 
-  <div class="chat-window" *ngIf="isOpen">
+ @if(isOpen){
+  <div class="chat-window">
     <div class="chat-header">
       SmartCart Assistant
-      <button (click)="toggleChat()">✖</button>
+      <button class="btn btn-sm text-primary fs-5"(click)="toggleChat()">✖</button>
     </div>
 
 <div class="chat-body">
@@ -28,6 +28,7 @@
       <button (click)="sendMessage()">➤</button>
     </div>
   </div>
+}
 </div>
 
 
