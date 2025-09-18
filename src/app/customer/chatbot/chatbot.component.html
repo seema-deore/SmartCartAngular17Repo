@@ -15,11 +15,18 @@
   <div *ngFor="let msg of messages" [ngClass]="msg.type">
     {{ msg.text }}
   </div>
-  <div class="quick-replies">
-      <button (click)="handleQuickReply('my cart')">🛒 My Cart</button>
-      <button (click)="handleQuickReply('my orders')">📦 My Orders</button>
-      <button (click)="handleQuickReply('categories')">📂 Categories</button>
-    </div>
+
+  <div class="quick-buttons">
+    <button class="quick-btn" (click)="onQuickClick('Special Offers')">Special offers</button>
+    <button class="quick-btn" (click)="onQuickClick('Return Policy')">Return Policy</button>
+    <button class="quick-btn" (click)="onQuickClick('Shipping Charges')">Shipping charges</button>
+  </div>
+  <!-- <div class="quick-replies"> -->
+      <!-- <button (click)="handleQuickReply('my cart')">🛒 My Cart</button>
+      <button (click)="handleQuickReply('my orders')">📦 My Orders</button> -->
+
+      <!-- <button (click)="handleQuickReply('categories')">📂 Categories</button> -->
+    <!-- </div> -->
   <div *ngIf="loading" class="bot">Typing...</div>
 </div>
 

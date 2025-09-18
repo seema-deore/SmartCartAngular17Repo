@@ -1,0 +1,14 @@
+{
+  "special_offers": {
+    "title": "Special Offers",
+    "text": "🔥 Today's top deals: Up to 50% off on selected electronics, 25% off on fashion!!"
+  },
+  "return_policy": {
+    "title": "Return Policy",
+    "text": "↩️ You may return most items within 14 days of delivery in original condition. Refunds processed within 5-7 business days after we receive the item."
+  },
+  "shipping_charges": {
+    "title": "Shipping Charges",
+    "text": "🚚 Standard shipping: ₹49. Free shipping for orders over ₹999. Express delivery available at extra cost depending on location and weight."
+  }
+}

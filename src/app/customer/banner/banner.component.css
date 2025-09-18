@@ -158,7 +158,7 @@
   max-height: 650px; 
   position: relative;  
   align-items: center;
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5); /* dark overlay */
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4); /* dark overlay */
 }
 
 @media (max-width: 768px) {

@@ -20,7 +20,11 @@ export class AppComponent implements OnInit{
   title = 'SmartCart';
 isAdminRoute = false;
 features: any = [
-{ heading : "✔ Free Live API Integration -",
+
+{ heading:"✔ Chatbot Conversation - ",
+  data: "Custom chatbot powered by OpenAI + SmartCart APIs to assist users with FAQs and product queries in real time."
+},
+{ heading : "✔ 25+ Free Live API Integration -",
   data : "To implement and maintain  E-commerce flow"
 },
 { heading:"✔ Token-based Authentication -",
@@ -55,7 +59,12 @@ features: any = [
 },
 { heading:"✔ Bootstrap 5 Integration - ",
   data: "Responsive layouts with utility classes and scoped styling."
-}]
+},
+{ heading:"✔ Interactive Store Locator - ",
+  data: "Leaflet map integration to show SmartCart store locations."
+}
+
+]
 
   visibleFeatures: any = [];
   currentIndex = 0;

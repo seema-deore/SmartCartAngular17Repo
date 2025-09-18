@@ -17,6 +17,11 @@ export class ChatService {
     return this.http.post<{ reply: string }>(this.apiUrl, { message });
   }
 
+   getReadyChat(message: string): Observable<any> {
+    return this.http.get<any>('assets/chatbot-responses.json');
+  }
+
+
   // 🔹 Fetch cart products by customerId
   getCartProducts(customerId: number): Observable<any> {
     // return this.http.get(`${this.smartCartApi}/GetCartProductsByCustomerId?id=${customerId}`);

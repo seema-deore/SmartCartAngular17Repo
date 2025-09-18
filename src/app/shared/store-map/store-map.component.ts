@@ -22,7 +22,7 @@ export class StoreMapComponent implements AfterViewInit {
   constructor(private storeService: StoreLocationService) {}
 
   ngAfterViewInit(): void {
-    const map = L.map('map').setView([20.5937, 78.9629], 5); // Center on India
+    const map = L.map('map').setView([22.5937, 78.9629], 3.5); // Center on India
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors'

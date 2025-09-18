@@ -1,7 +1,7 @@
 .chatbot-wrapper {
   position: fixed;
-  bottom: 20px;
-  right: 20px;  
+  bottom: 10px;
+  right: 10px;  
 }
 
 .chat-not-toggle {
@@ -65,7 +65,7 @@
   color: #333;
   padding: 8px 12px;
   border-radius: 12px;
-  max-width: 70%;
+  max-width: 90%;
 }
 
 /* User messages (right aligned) */
@@ -126,3 +126,22 @@
     font-weight: lighter;
     font-size:small;
   }
+  .quick-btn {
+    width:90%;
+    margin-bottom: .5rem;
+  border: 1px solid #6282a3ff;
+  color: #6282a3ff;
+  background: transparent;
+  padding: 6px 12px;
+  border-radius: 999px; /* pill */
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background .15s, color .15s, transform .06s;
+  box-shadow: none;
+}
+
+.quick-btn:hover {
+  background-color:#6282a3ff;
+  color: white;
+  transform: translateY(-1px);
+}
