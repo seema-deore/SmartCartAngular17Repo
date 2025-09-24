@@ -1,27 +1,118 @@
-# SmartCart
+📄 SmartCart – E-commerce Application (Angular 17)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
+🚀 Project Overview
 
-## Development server
+SmartCart is a modern E-commerce web application built with Angular 17.
+It showcases features like product browsing, cart management, user authentication, and order checkout, designed to provide a real-world shopping experience.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+✨ Key Features
 
-## Build
+🛒 Product Listing – Browse products with categories & filters
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+📦 Cart Management – Add, remove, and update product quantities
 
-## Running unit tests
+🔑 Authentication – Login/Signup using JWT-based authentication
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+👨‍💻 Role-based Access – Admin & Customer modules with Angular route guards
 
-## Running end-to-end tests
+💳 Checkout Process – Review cart and place orders
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+🔍 Search & Sort – Quickly find products by name or category
 
-## Further help
+📱 Responsive Design – Optimized for desktop and mobile
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+🛠️ Tech Stack
+
+Frontend: Angular 17, Bootstrap 5, CSS, HTML 5 
+
+Backend: [API Source / Mock API]
+
+Authentication: JWT with role-based access
+
+Deployment: [Vercel / Netlify / GitHub Pages]
+
+📂 Project Structure:
+
+SmartCart
+    .angular/
+    .git/
+    .vscode/
+    .backend/
+    ├── node_module/
+    ├── .env
+    ├── server.js
+    ├── ........
+    ├── ........
+            
+    src/
+    ├── app/
+    |    ├── admin/   
+    │          ├── (category-management, dashboard, orders, overview, product-management, admin.routes.ts)
+    │    ├── auth/      
+    │           ├── (login, register)  
+    │    ├── customer/           
+    │           ├── (banner, cart, chatbot, checkout, home, product-details, product-list, wishlist, customer.routes.ts)
+    │    ├── filters/     
+    │           ├── (product-search.pipe.ts)    
+    │    ├── guards/ 
+    │           ├── (admin, customer, auth)           
+    │    ├── services/
+    │           ├── (auth, cart, chat, dashboard, product, store-location, wishlist)  
+    │    ├── shared/
+    │           ├── (header, footer, store-map)      
+    ├── assets/                 # images, icons, .json files                
+    ├── proxy.conf.json         # To resove Cross-Origin Resource Sharing error
+    ├── README.md 
+    ├── ............
+    ├── ...........
+
+⚡ Angular 17 Learnings
+
+✅ Standalone Components & Signals for state management
+
+✅ Optimized change detection for better performance
+
+✅ Lazy Loading & Route Guards for modular architecture
+
+✅ Reactive Forms with validations
+
+✅ REST API integration for authentication & product data
+
+📸 Screenshots (Optional)
+
+Add screenshots of Home Page, Product Page, Cart, Checkout for better visualization.
+[Home-page](home-page.png)
+[Home-page-scroll-content](image-1.png)
+[Login-page](image-2.png)
+[Product-detail-page](image-3.png)
+[Chatbot](image-4.png)
+[Order-summary-page](image-5.png)
+[Admin-dashboard](image-6.png)
+
+▶️ Run Locally: 
+
+
+# Clone repository
+git clone https://github.com/seema-deore/SmartCartAngular17Repo
+
+# Navigate to project folder
+cd smartcart
+
+# Install dependencies
+npm install
+
+# Start development server
+ng serve -o
+
+🌍 Live Demo
+
+🔗 Deployed SmartCart App Link: 
+
+
+📧 Contact:  seema.ideore@gmail.com
+
+🔗 LinkedIn Profile: https://www.linkedin.com/in/seema-ideore/
